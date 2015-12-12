@@ -4,8 +4,7 @@
 	</div>
 
 	<div id="Content" ng-if="firstscreen">
-    	<span class="hidden-xs" style="cursor: pointer; color: white; position: absolute; bottom: 30px; right: 50px; font-size: 24px;" ng-click="avancar();" >AVANÇAR <i style="font-size: 42px; position: relative; top: 7px; left: 8px;" class="fa fa-caret-right" ></i></span>
-    	<span class="hidden-sm hidden-md hidden-lg" style="cursor: pointer; color: white; position: absolute; bottom: 50%; right: 50%; font-size: 22px;" ><i style="font-size: 42px; position: relative; top: 7px; left: 8px;" class="fa fa-caret-square-o-right" ></i></span>
+    	<span style="cursor: pointer; color: white; position: absolute; bottom: 30px; right: 50px; font-size: 24px;" ng-click="avancar();" >AVANÇAR <i style="font-size: 42px; position: relative; top: 7px; left: 8px;" class="fa fa-caret-right" ></i></span>
     </div>
 
     <div class="container" ng-if="secondscreen" style="padding-top: 200px; background-image: url('/images/Presentationarrows.png'); background-size: contain; background-repeat: no-repeat; background-position: 100px;">
@@ -27,6 +26,22 @@
 
     <div ng-if="secondscreen">
     	<span style="cursor: pointer; color: white; position: absolute; bottom: 30px; right: 50px; font-size: 24px;" ng-click="avancar2();" >AVANÇAR<i style="font-size: 42px; position: relative; top: 7px; left: 8px;" class="fa fa-caret-right" ></i></span>	
+    </div>
+
+    <div class="container" ng-if="thirdscreen" style="padding-top: 200px;">
+    	<div class="row">
+	    	<div class="col-md-12" style="background-color: #FFFFFF; padding: 10px;">
+	    		<h1 style="padding-left: 10px;">Leo quer MUITO bumbum</h1>
+	    	</div>
+    	</div>
+    	<div class="row"style="margin-top: 100px;">
+	    	<div class="col-md-6 explain">
+	    		<div class="row"><img style="width: 400px; padding-right: 25px; cursor: pointer;" src="images/choosecaracterpolitics2.png" ng-click="LeoQuer(1)"></div>
+	    	</div>
+	    	<div class="col-md-6 explain">
+	    		<div class="row"><img style="width: 400px; padding-right: 25px; cursor: pointer;" src="images/choosecaracterpolitics.png" ng-click="LeoQuer(2)"></div>
+	    	</div>
+    	</div>
     </div>
 
     <div ng-if="thirdscreen">
@@ -73,7 +88,6 @@
         </div>
     </div>
 </script>
-    <div id="Tadeugay" > <button type="button" class="btn btn-danger" ng-click="LeoQuer(1)"> Leo Quer Cu </button> </div>
-	<div id="Leogay" > <button type="button" class="btn btn-danger" ng-click="LeoQuer(2)"> Leo Quer Bumbum </button> </div>
+
 </div>
 
