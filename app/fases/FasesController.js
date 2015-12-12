@@ -1,18 +1,16 @@
-
 ;(function() {
 
   angular
     .module('boilerplate')
     .controller('FasesController', FasesController);  
 
-  FasesController.$inject = ['$scope', '$firebase', 'FIREBASE_URI', '$location', '$cookies'];
+  FasesController.$inject = ['$scope', '$firebase', 'FIREBASE_URI', '$location', '$cookies', '$routeParams'];
 
-  function FasesController($scope, $firebase, FIREBASE_URI, $location, $cookies) {
-
-    // 'controller as' syntax
-    var vm = this;
+  function FasesController($scope, $firebase, FIREBASE_URI, $location, $cookies, $routeParams) {
+    $scope.TipoId = $routeParams.tipoId;
     $scope.fases = [];
-    var ref = new Firebase(FIREBASE_URI);
+    console.log($scope.TipoId);
+   var ref = new Firebase(FIREBASE_URI);
 
     var faseRef = ref.child('Fases');
 
@@ -47,9 +45,8 @@
       $cookies.put('StatsId', stats.key());
     };
 
-    $scope.checa = function(faseTipo){
-      console.log('jooooj');
-      if(faseTipo == '1'){
+    $scope.checa = function(){
+      if($scope.TipoId == '1'){
         return false;
       }
       else{
