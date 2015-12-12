@@ -5,17 +5,12 @@
  * or you can have separate controllers for each logical section
  * 
  */
-<<<<<<< HEAD
 
- var Firebase = require("firebase");
-
-=======
->>>>>>> d1a3de118b25f2349ad488d389004e61e5989af8
 ;(function() {
 
   angular
     .module('boilerplate')
-    .controller('FasesController', FasesController);
+    .controller('FasesController', FasesController);  
 
   FasesController.$inject = ['$scope', '$firebase', 'FIREBASE_URI'];
 
@@ -58,6 +53,15 @@
 
     faseRef.set({
           pessoa: {
+            name: "Leonardo",
+            type: TypeEnum.POLITICIAN,
+            age: 12,
+            profession: "Engenheiro"
+          }
+    });
+
+    faseRef.set({
+          Hue: {
             name: "Leonardo",
             type: TypeEnum.POLITICIAN,
             age: 12,
