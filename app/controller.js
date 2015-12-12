@@ -11,6 +11,7 @@
 
     $scope.firstscreen = true;
     $scope.secondscreen = false;
+    $scope.thirdscreen = false;
 
     var ref = new Firebase(FIREBASE_URI);
     var UserInfoRef = new Firebase(FIREBASE_URI + '/UserInfo');
@@ -113,14 +114,14 @@
       });
     };
 
-$scope.avancar = function(){
+    $scope.avancar = function(){
       if($scope.firstscreen){
         $scope.firstscreen = false;  
       }
-      else{
+       else{
         $scope.firstscreen = true; 
       }
-      
+          
       if($scope.secondscreen){
         $scope.secondscreen = false;
       }
@@ -128,7 +129,23 @@ $scope.avancar = function(){
         $scope.secondscreen = true;
       }
     }
-    
+
+    $scope.avancar2 = function(){
+      if($scope.thirdscreen){
+        $scope.thirdscreen = false;  
+      }
+       else{
+        $scope.thirdscreen = true; 
+      }
+          
+      if($scope.secondscreen){
+        $scope.secondscreen = false;
+      }
+      else{
+        $scope.secondscreen = true;
+      }
+    }
+        
     $scope.LeoQuer = function (type) {
    
         $location.url(type + '/fases/');

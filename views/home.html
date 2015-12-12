@@ -20,6 +20,19 @@
     		<div class="row"><img style="width: 225px;" src="images/presentationcaracterpolitics2.png"></div>
     	</div>
     </div>
+
+    <div ng-if="secondscreen">
+    	<span style="cursor: pointer; color: white; position: absolute; bottom: 30px; left: 0px; font-size: 24px;" ng-click="avancar();" ><i style="font-size: 42px; position: relative; top: 7px; left: -5px;" class="fa fa-caret-left" ></i>VOLTAR</span>
+    </div>
+
+    <div ng-if="secondscreen">
+    	<span style="cursor: pointer; color: white; position: absolute; bottom: 30px; right: 50px; font-size: 24px;" ng-click="avancar2();" >AVANÇAR<i style="font-size: 42px; position: relative; top: 7px; left: 8px;" class="fa fa-caret-right" ></i></span>	
+    </div>
+
+    <div ng-if="thirdscreen">
+    	<span style="cursor: pointer; color: white; position: absolute; bottom: 30px; left: 0px; font-size: 24px;" ng-click="avancar2();" ><i style="font-size: 42px; position: relative; top: 7px; left: -5px;" class="fa fa-caret-left" ></i>VOLTAR</span>
+    </div>
+
 </div>
 
 <script type="text/ng-template" id="LoginDialog">
