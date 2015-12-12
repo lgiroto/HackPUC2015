@@ -43,6 +43,11 @@
         controller: 'MainController',
         controllerAs: 'main'
       })
+      .when('/fases', {
+        templateUrl: 'app/fases/fases.html',
+        controller: 'FasesController',
+        controllerAs: 'fases'
+      })
       .when('/contact', {
         templateUrl: 'views/contact.html',
         controller: 'MainController',
