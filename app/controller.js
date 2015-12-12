@@ -6,20 +6,19 @@
 
   MainController.$inject = ['$scope', '$rootScope', 'FIREBASE_URI', '$cookies', 'ngDialog'];
 
-
   function MainController($scope, $rootScope, FIREBASE_URI, $cookies, ngDialog) {
 
     var ref = new Firebase(FIREBASE_URI);
     var UserInfoRef = new Firebase(FIREBASE_URI + '/UserInfo');
+    $scope.LoginSelectedOption = 0;
 
-    $scope.FazerLogin = function() {
+    $scope.ChangeLoginOptions = function(Option) {
+      
       ngDialog.open({
           template: 'LoginDialog',
           controller: ['$scope',  function ($scope) {
-
-            $scope.ShowLoginOptions = true;
-            $scope.LoginSelectedOption = 0;
-
+          
+            $scope.LoginSelectedOption = Option;
             $scope.CadastroManual = function(Email, Senha, NomeCompleto, DataNascimento) {
               ref.createUser({
                 email    : Email,
@@ -65,42 +64,9 @@
               });
             };
 
-            $scope.FacebookLogin = function () { 
-
-              ref.authWithOAuthPopup("facebook", function(error, authData) {
-                if (error) {
-                  // to do: tratar erro na interface
-                  console.log("Login Failed!", error);
-                }
-
-               /*userRef.orderByChild("login").equalTo(authData.facebook.cachedUserProfile.id).on("child_added", function (response){
-                 var userExists = response.exists();
-                 if(!userExists) {
-                    var newProfileObj = {};
-                    newProfileObj[userData.uid] = {
-                      NomeCompleto: NomeCompleto,
-                      DataNascimento: DataNascimento
-                    };
-                    UserInfoRef.push(newProfileObj);
-
-                     var login = userRef.push({
-                         login: authData.facebook.cachedUserProfile.id,
-                         password: authData.facebook.cachedUserProfile.id,
-                         name: authData.facebook.cachedUserProfile.name,
-                         age: authData.facebook.cachedUserProfile.age_range.min
-                     });
-                  }
-                });*/
-              });
-            };
-
-            $scope.ChangeLoginOptions = function(Option) {
-              $scope.ShowLoginOptions = false;
-              $scope.LoginSelectedOption = Option;
-            };
+            
 
             $scope.Voltar = function() {
-              $scope.ShowLoginOptions = true;
               $scope.LoginSelectedOption = 0;
             }
 
@@ -108,6 +74,34 @@
               ngDialog.close();
             };
         }]
+      });
+    };
+
+    $scope.FacebookLogin = function () { 
+      ref.authWithOAuthPopup("facebook", function(error, authData) {
+        if (error) {
+          // to do: tratar erro na interface
+          console.log("Login Failed!", error);
+        }
+
+       /*userRef.orderByChild("login").equalTo(authData.facebook.cachedUserProfile.id).on("child_added", function (response){
+         var userExists = response.exists();
+         if(!userExists) {
+            var newProfileObj = {};
+            newProfileObj[userData.uid] = {
+              NomeCompleto: NomeCompleto,
+              DataNascimento: DataNascimento
+            };
+            UserInfoRef.push(newProfileObj);
+
+             var login = userRef.push({
+                 login: authData.facebook.cachedUserProfile.id,
+                 password: authData.facebook.cachedUserProfile.id,
+                 name: authData.facebook.cachedUserProfile.name,
+                 age: authData.facebook.cachedUserProfile.age_range.min
+             });
+          }
+        });*/
       });
     };
 

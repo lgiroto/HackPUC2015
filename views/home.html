@@ -1,26 +1,21 @@
+<div id="Main" class="row text-center" >
+	<div id="SiteTitle" >
+		<p style="display: inline-block; color: white; cursor: pointer;">
+			<span ng-click="ChangeLoginOptions(1)" ><i class="fa fa-pencil-square-o"></i> &nbsp;Cadastro</span> &nbsp;&nbsp;
+			<span ng-click="ChangeLoginOptions(2)" ><i class="fa fa-key" ></i> &nbsp;Login</span> &nbsp;&nbsp;
+			<span ng-click="FacebookLogin()"  ><i class="fa fa-facebook-official" ></i> &nbsp;Entre pelo Facebook</span>
+		</p><br>
+		<h1 class="text-center" style="padding: 30px 60px; font-weight: 900; display: inline-block; background: white;" >99% ÉTICO E 1% CORRUPTO</h1>
+	</div>
 
-<h1 class="text-center">99% Ético e 1% Corrupto</h1>
-
-<div class="row text-center" >
-    <button class="btn btn-default" ng-click="FazerLogin()">JOGAR</button>
+	<div id="Content" style="background-image: url('images/covericon.png'); background-size: 80%;
+    background-repeat: no-repeat; height: 100%; background-position: bottom;" >
+	</div>
 </div>
 
 <script type="text/ng-template" id="LoginDialog">
-	<i class="fa fa-caret-left" style="color: white; position: absolute; top: 22px; left: 20px; font-size: 20px; cursor: pointer; z-index: 2;" ng-click="Voltar()" ng-if="!ShowLoginOptions" ></i>
 	<i class="fa fa-times" style="color: white; position: absolute; top: 22px; right: 20px; font-size: 20px; cursor: pointer; z-index: 2;" ng-click="Fechar()" ></i>
     <div class="ngdialog-message col-sm-12 col-md-12 col-lg-12" >
-        <div id="LoginDiv" class="row" ng-if="ShowLoginOptions" >
-        	<div class="col-sm-6 col-md-6" ng-click="ChangeLoginOptions(1)" style="width: 100%;" >
-    			<h3 class="text-center" >CADASTRE-SE</h3>
-        	</div>
-        	<div class="col-sm-6 col-md-6" ng-click="ChangeLoginOptions(2)" style="width: 100%;" >
-    			<h3 class="text-center" >FAÇA LOGIN</h3>
-        	</div>
-        	<div class="col-sm-12 col-md-12" ng-click="FacebookLogin()" style="width: 100%;" >
-    			<h3 class="text-center" >ACESSE PELO FACEBOOK</h3>
-        	</div>
-    	</div>
-
     	<div class="row text-center LoginOptions" ng-if="LoginSelectedOption==1" >
     		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-bottom: 25px; border-right: 1px solid;" >
     			<h3 class="text-center" >CADASTRE-SE</h3><br>
@@ -58,6 +53,29 @@
 </script>
 
 <style type="text/css">
+
+.header {
+	    position: fixed;
+    width: 100%;
+}
+
+body {
+	height: 100%;
+}
+
+.container {
+	height: 100%;
+    text-align: center;
+}
+
+#SiteTitle{
+    position: fixed; width: 100%; left: 0; top: 25px;
+}
+
+#Main {
+	height: 100%;
+}
+
 div#LoginDiv div h3 { 
 	cursor: pointer;
 }
