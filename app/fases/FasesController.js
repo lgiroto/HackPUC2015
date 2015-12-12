@@ -1,4 +1,4 @@
-
+var Firebase = require("firebase");
 
 ;(function() {
 
@@ -24,7 +24,7 @@
 
     faseRef.set({
           pessoa: {
-            name: "Leonardo",
+            name: "Amanda",
             type: TypeEnum.POLITICIAN,
             age: 12,
             profession: "Engenheiro"
