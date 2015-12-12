@@ -60,7 +60,6 @@
 
 	 var Firebase = __webpack_require__(2);
 
-
 	;(function() {
 
 	  angular
@@ -81,7 +80,7 @@
 	    var pintoRef = ref.child('pintos');
 
 	    userRef.set({
-	              mchen: {
+	              amanda: {
 	                friends: { "brinchen": true },
 	                name: "Mary Chen",
 	                widgets: { "one": true, "three": true }

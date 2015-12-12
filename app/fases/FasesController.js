@@ -6,8 +6,6 @@
  * 
  */
 
- var Firebase = require("firebase");
-
 
 ;(function() {
 
@@ -29,7 +27,7 @@
     var pintoRef = ref.child('pintos');
 
     userRef.set({
-              mchen: {
+              amanda: {
                 friends: { "brinchen": true },
                 name: "Mary Chen",
                 widgets: { "one": true, "three": true }
