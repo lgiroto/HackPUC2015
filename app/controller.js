@@ -5,33 +5,48 @@
  * or you can have separate controllers for each logical section
  * 
  */
+
 ;(function() {
 
   angular
     .module('boilerplate')
     .controller('MainController', MainController);
 
-  MainController.$inject = ['LocalStorage', 'QueryService'];
+  MainController.$inject = ['$scope'];
 
 
-  function MainController(LocalStorage, QueryService) {
+  function MainController($scope ) {
 
     // 'controller as' syntax
     var self = this;
 
+    $scope.login = function () { 
 
-    ////////////  function definitions
+      var ref = new Firebase("https://boiling-inferno-5866.firebaseio.com");
 
+      var userRef = ref.child('user');
 
-    /**
-     * Load some data
-     * @return {Object} Returned object
-     */
-    // QueryService.query('GET', 'posts', {}, {})
-    //   .then(function(ovocie) {
-    //     self.ovocie = ovocie.data;
-    //   });
+      ref.authWithOAuthPopup("facebook", function(error, authData) {
+        if (error) {
+          console.log("Login Failed!", error);
+        } else {
+          console.log("Authenticated successfully with payload:", authData);
+
+          userRef.push({
+          name: authData.facebook.cachedUserProfile.name,
+          gender: authData.facebook.cachedUserProfile.gender,
+          age: authData.facebook.cachedUserProfile.age_range.min,
+          picture: authData.facebook.cachedUserProfile.picture.data.url 
+          });
+
+        }
+      });
+
   }
+
+
+}
+
 
 
 })();

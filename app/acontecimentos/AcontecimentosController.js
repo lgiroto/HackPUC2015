@@ -1,4 +1,3 @@
-var Firebase = require("firebase");
 
 ;(function() {
 

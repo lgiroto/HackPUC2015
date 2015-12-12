@@ -1,5 +1,4 @@
 
-var Firebase = require("firebase");
 ;(function() {
 
   angular
