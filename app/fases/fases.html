@@ -1,10 +1,20 @@
-<div class="container">
-	<h1>TESTE</h1>
-	<div class="row" ng-repeat="fase in fases" ng-if="!fase.id">
-		<div class="col-md-3"><p>{{ fase.Nome }}</p></div>
-		<div class="col-md-3"><p>{{ fase.Descricao }}</p></div>
-		<div class="col-md-3"><p>{{ fase.Img }}</p></div>
-		<div class="col-md-3"><button ng-click="action(fase.Nome.slice(-1))">Select</button></div>
-	</div>
-</div>
 
+	<div class="row centered-form center-block">
+	    <div class="container col-md-12">
+	        <img style="text-align:center;height:489px;margin-top:100px" src="images/withoutarrow_1024.png">
+	    </div>
+	</div>
+
+	<div class="row" ng-repeat="fase in fases" ng-if="!fase.id">
+
+		<div class="row" style="margin-top:100px; background-color: #FFFFFF">
+			
+			<div class="col-md-12"><p>{{ fase.Descricao }}</p></div>
+			
+		</div>
+
+		<div class="row" style="margin-top:100px"><button ng-click="action(fase.Nome.slice(-1))">Select</button></div>
+	</div>
+
+
+</div>

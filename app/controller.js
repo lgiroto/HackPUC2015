@@ -111,7 +111,7 @@
     };
 
 
-    $scope.LeoQuer = function (type) {
+    $scope.escolheTipo = function (type) {
    
         $location.url(type + '/fases/');
 
