@@ -38,6 +38,7 @@
   },
   "scripts": {
     "postinstall": "bower install --no-interactive --allow-root"
+    
   },
   "repository": {
     "type": "git",
@@ -59,6 +60,7 @@
   },
   "homepage": "https://github.com/jbutko/AngularJS-Boilerplate",
   "dependencies": {
-    "firebase": "^2.3.2"
+    "firebase": "^2.3.2",
+    "webpack": "^1.12.9"
   }
 }
