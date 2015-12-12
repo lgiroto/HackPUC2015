@@ -57,7 +57,6 @@
 	 * or you can have separate controllers for each logical section
 	 * 
 	 */
-
 	 var Firebase = __webpack_require__(2);
 
 	;(function() {
@@ -66,17 +65,21 @@
 	    .module('boilerplate')
 	    .controller('FasesController', FasesController);
 
-	  FasesController.$inject = ['$firebase', 'FIREBASE_URI'];
+	  FasesController.$inject = ['$scope', '$firebase', 'FIREBASE_URI'];
 
 	  var TypeEnum = {
 	  CIVIL : 'Político',
 	  POLITICIAN: 'Civil'
 	};
 
-	  function FasesController($firebase, FIREBASE_URI) {
+	  function FasesController($scope, $firebase, FIREBASE_URI) {
 
 	    // 'controller as' syntax
 	    var vm = this;
+
+	    console.log('teste');
+
+	    $scope.teste = "teste";
 
 	    var ref = new Firebase(FIREBASE_URI);
 
@@ -86,7 +89,7 @@
 	    var faseRef = ref.child('fases');
 
 	    userRef.set({
-	              mchen: {
+	              amanda: {
 	                friends: { "brinchen": true },
 	                name: "Mary Chen",
 	                widgets: { "one": true, "three": true }
