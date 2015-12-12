@@ -47,7 +47,7 @@
         controller: 'MainController',
         controllerAs: 'main'
       })
-      .when('/fases', {
+      .when('/:tipoId/fases', {
         templateUrl: 'app/fases/fases.html',
         controller: 'FasesController'
       })

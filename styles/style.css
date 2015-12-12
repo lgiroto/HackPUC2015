@@ -177,14 +177,14 @@ td, th {
   margin-top: 60px;
   background-color: #B8D66D;
   text-align: center;
+  color: #4d4d4d;
 }
 .status h3{
   display: inline-block;
-  border-bottom: 2px solid #FFFFFF;
 }
 
 .verticalStatusBar{
-  width: 40px;
+  width: 30px;
   height: 80px;
   background-color: #F68E1E;
   display: inline-block;
@@ -197,7 +197,7 @@ td, th {
 }
 
 .horizontalStatusBar{
-  height: 40px;
+  height: 30px;
   width: 200px;
   background-color: #FFFFFF;
   display: inline-block
@@ -205,7 +205,7 @@ td, th {
 
 .horizontalStatusBar span{
   position: absolute;
-  line-height: 40px;
+  line-height: 30px;
 }
 
 .lastStatus{
