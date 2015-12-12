@@ -4,21 +4,22 @@
     .module('boilerplate')
     .controller('MainController', MainController);
 
-  MainController.$inject = ['$scope', '$rootScope', 'FIREBASE_URI', '$cookies', 'ngDialog'];
+  MainController.$inject = ['$scope', '$rootScope', 'FIREBASE_URI', '$cookies', 'ngDialog', '$location'];
 
-  function MainController($scope, $rootScope, FIREBASE_URI, $cookies, ngDialog) {
+
+  function MainController($scope, $rootScope, FIREBASE_URI, $cookies, ngDialog, $location) {
 
     var ref = new Firebase(FIREBASE_URI);
     var UserInfoRef = new Firebase(FIREBASE_URI + '/UserInfo');
-    $scope.LoginSelectedOption = 0;
 
-    $scope.ChangeLoginOptions = function(Option) {
-      
+    $scope.FazerLogin = function() {
       ngDialog.open({
           template: 'LoginDialog',
           controller: ['$scope',  function ($scope) {
-          
-            $scope.LoginSelectedOption = Option;
+
+            $scope.ShowLoginOptions = true;
+            $scope.LoginSelectedOption = 0;
+
             $scope.CadastroManual = function(Email, Senha, NomeCompleto, DataNascimento) {
               ref.createUser({
                 email    : Email,
@@ -64,9 +65,42 @@
               });
             };
 
-            
+            $scope.FacebookLogin = function () { 
+
+              ref.authWithOAuthPopup("facebook", function(error, authData) {
+                if (error) {
+                  // to do: tratar erro na interface
+                  console.log("Login Failed!", error);
+                }
+
+               /*userRef.orderByChild("login").equalTo(authData.facebook.cachedUserProfile.id).on("child_added", function (response){
+                 var userExists = response.exists();
+                 if(!userExists) {
+                    var newProfileObj = {};
+                    newProfileObj[userData.uid] = {
+                      NomeCompleto: NomeCompleto,
+                      DataNascimento: DataNascimento
+                    };
+                    UserInfoRef.push(newProfileObj);
+
+                     var login = userRef.push({
+                         login: authData.facebook.cachedUserProfile.id,
+                         password: authData.facebook.cachedUserProfile.id,
+                         name: authData.facebook.cachedUserProfile.name,
+                         age: authData.facebook.cachedUserProfile.age_range.min
+                     });
+                  }
+                });*/
+              });
+            };
+
+            $scope.ChangeLoginOptions = function(Option) {
+              $scope.ShowLoginOptions = false;
+              $scope.LoginSelectedOption = Option;
+            };
 
             $scope.Voltar = function() {
+              $scope.ShowLoginOptions = true;
               $scope.LoginSelectedOption = 0;
             }
 
@@ -74,34 +108,6 @@
               ngDialog.close();
             };
         }]
-      });
-    };
-
-    $scope.FacebookLogin = function () { 
-      ref.authWithOAuthPopup("facebook", function(error, authData) {
-        if (error) {
-          // to do: tratar erro na interface
-          console.log("Login Failed!", error);
-        }
-
-       /*userRef.orderByChild("login").equalTo(authData.facebook.cachedUserProfile.id).on("child_added", function (response){
-         var userExists = response.exists();
-         if(!userExists) {
-            var newProfileObj = {};
-            newProfileObj[userData.uid] = {
-              NomeCompleto: NomeCompleto,
-              DataNascimento: DataNascimento
-            };
-            UserInfoRef.push(newProfileObj);
-
-             var login = userRef.push({
-                 login: authData.facebook.cachedUserProfile.id,
-                 password: authData.facebook.cachedUserProfile.id,
-                 name: authData.facebook.cachedUserProfile.name,
-                 age: authData.facebook.cachedUserProfile.age_range.min
-             });
-          }
-        });*/
       });
     };
 
@@ -116,5 +122,13 @@
         });
       $cookies.put('StatsId', stats.key());
     };
+
+    $scope.LeoQuer = function (type) {
+   
+        $location.url(type + '/fases/');
+
+    }
+
+
   }
 })();
