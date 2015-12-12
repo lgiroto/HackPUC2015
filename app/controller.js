@@ -5,6 +5,7 @@
  * or you can have separate controllers for each logical section
  * 
  */
+
 ;(function() {
 
   angular
@@ -21,7 +22,6 @@
 
     $scope.login = function () { 
 
-
       var ref = new Firebase("https://boiling-inferno-5866.firebaseio.com");
 
       var userRef = ref.child('user');
@@ -32,13 +32,12 @@
         } else {
           console.log("Authenticated successfully with payload:", authData);
 
-          console.log(authData.facebook.cachedUserProfile.id);
-          console.log(authData.facebook.cachedUserProfile.name);
-          console.log(authData.facebook.cachedUserProfile.gender);
-          console.log(authData.facebook.cachedUserProfile.age_range.min);
-          console.log(authData.facebook.cachedUserProfile.picture.data.url);
-
-              
+          userRef.push({
+          name: authData.facebook.cachedUserProfile.name,
+          gender: authData.facebook.cachedUserProfile.gender,
+          age: authData.facebook.cachedUserProfile.age_range.min,
+          picture: authData.facebook.cachedUserProfile.picture.data.url 
+          });
 
         }
       });

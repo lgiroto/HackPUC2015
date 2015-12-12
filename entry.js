@@ -1,2 +1,1 @@
-require("./app/fases/FasesController.js");
-require("./app/acontecimentos/AcontecimentosController.js");
+var Firebase = require("firebase");
