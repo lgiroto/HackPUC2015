@@ -1,6 +1,87 @@
 
-<h2 class="text-center">AngularJS Boilerplate</h2>
+<h1 class="text-center">99% Ético e 1% Corrupto</h1>
 
-<div class="row" >
-    <button class="btn btn-default" ng-click="login()">TESTE</button>
+<div class="row text-center" >
+    <button class="btn btn-default" ng-click="FazerLogin()">JOGAR</button>
 </div>
+
+<script type="text/ng-template" id="LoginDialog">
+	<i class="fa fa-caret-left" style="color: white; position: absolute; top: 22px; left: 20px; font-size: 20px; cursor: pointer; z-index: 2;" ng-click="Voltar()" ng-if="!ShowLoginOptions" ></i>
+	<i class="fa fa-times" style="color: white; position: absolute; top: 22px; right: 20px; font-size: 20px; cursor: pointer; z-index: 2;" ng-click="Fechar()" ></i>
+    <div class="ngdialog-message col-sm-12 col-md-12 col-lg-12" >
+        <div id="LoginDiv" class="row" ng-if="ShowLoginOptions" >
+        	<div class="col-sm-6 col-md-6" ng-click="ChangeLoginOptions(1)" style="width: 100%;" >
+    			<h3 class="text-center" >CADASTRE-SE</h3>
+        	</div>
+        	<div class="col-sm-6 col-md-6" ng-click="ChangeLoginOptions(2)" style="width: 100%;" >
+    			<h3 class="text-center" >FAÇA LOGIN</h3>
+        	</div>
+        	<div class="col-sm-12 col-md-12" ng-click="FacebookLogin()" style="width: 100%;" >
+    			<h3 class="text-center" >ACESSE PELO FACEBOOK</h3>
+        	</div>
+    	</div>
+
+    	<div class="row text-center LoginOptions" ng-if="LoginSelectedOption==1" >
+    		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-bottom: 25px; border-right: 1px solid;" >
+    			<h3 class="text-center" >CADASTRE-SE</h3><br>
+        		<div class="input-group" style="width: 100%;" >
+					<input style="width: 100%; max-width: 100%;" type="text" class="form-control" placeholder="Nome Completo" ng-model="NomeCompleto" >
+				</div><br>
+				<div class="input-group" style="width: 100%;" >
+					<input style="width: 100%; max-width: 100%;" type="text" class="form-control" placeholder="Data de Nascimento" ng-model="DataNascimento" >
+				</div><br>
+				<div class="input-group" style="width: 100%;" >	
+					<input style="width: 100%; max-width: 100%;" type="text" class="form-control" placeholder="E-mail" ng-model="Email" >
+				</div><br>
+				<div class="input-group" style="width: 100%;" >
+					<input style="width: 48%; max-width: 50%; float: left;" type="password" class="form-control" placeholder="Senha" ng-model="Senha" >
+
+					<input style="width: 48%; max-width: 50%; float: right;" type="password" class="form-control" placeholder="Confirmar Senha" ng-model="ConfirmarSenha" >
+				</div><br>
+				<button style="color: rgb(92, 107, 128); background: rgb(234, 237, 242); border-radius: 50%; width: 50px; height: 50px; margin-bottom: 10px;" class="btn btn-default" ng-click="CadastroManual(Email, Senha, NomeCompleto, DataNascimento)" >OK</button>
+        	</div>
+    	</div>
+
+    	<div class="row text-center LoginOptions" ng-if="LoginSelectedOption==2" >
+        	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+    			<h3 class="text-center" >FAÇA LOGIN</h3><br>
+        		<div class="input-group" style="width: 100%;" >
+					<input style="width: 100%; max-width: 100%;" type="text" class="form-control" placeholder="E-mail" ng-model="LoginEmail" >
+				</div><br>
+				<div class="input-group" style="width: 100%;" >
+					<input style="width: 100%; max-width: 100%;" type="password" class="form-control" placeholder="Senha" ng-model="LoginSenha" >
+				</div><br>
+				<button style="color: rgb(92, 107, 128); background: rgb(234, 237, 242); border-radius: 50%; width: 50px; height: 50px; margin-bottom: 20px;" class="btn btn-default" ng-click="LoginManual(LoginEmail, LoginSenha)" >OK</button>
+        	</div>
+        </div>
+    </div>
+</script>
+
+<style type="text/css">
+div#LoginDiv div h3 { 
+	cursor: pointer;
+}
+
+#LoginDiv h3 {
+    padding: 18px 0px;
+    background: white;
+    color: #7CA40A;
+    font-size: 20px;
+}
+
+.LoginOptions h3{
+	color: white;
+}
+
+.ngdialog-content{ 
+	z-index: 1;
+    position: absolute;
+    width: 40%;
+    left: 30%;
+    top: 20%;
+    background: #B8DE6A;
+}	    
+.ngdialog-close {
+	display: none!important;
+}
+</style>
