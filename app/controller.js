@@ -8,6 +8,9 @@
 
   function MainController($scope, $rootScope, FIREBASE_URI, $cookies, ngDialog) {
 
+    $scope.firstscreen = true;
+    $scope.secondscreen = false;
+
     var ref = new Firebase(FIREBASE_URI);
     var UserInfoRef = new Firebase(FIREBASE_URI + '/UserInfo');
     $scope.LoginSelectedOption = 0;
@@ -116,5 +119,21 @@
         });
       $cookies.put('StatsId', stats.key());
     };
+
+    $scope.avancar = function(){
+      if($scope.firstscreen){
+        $scope.firstscreen = false;  
+      }
+      else{
+        $scope.firstscreen = true; 
+      }
+      
+      if($scope.secondscreen){
+        $scope.secondscreen = false;
+      }
+      else{
+        $scope.secondscreen = true;
+      }
+    }
   }
 })();

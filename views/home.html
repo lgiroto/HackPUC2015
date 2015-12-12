@@ -5,12 +5,25 @@
 			<span ng-click="ChangeLoginOptions(2)" ><i class="fa fa-key" ></i> &nbsp;Login</span> &nbsp;&nbsp;
 			<span ng-click="FacebookLogin()"  ><i class="fa fa-facebook-official" ></i> &nbsp;Entre pelo Facebook</span>
 		</p><br>
-		<h1 class="text-center" style="padding: 30px 60px; font-weight: 900; display: inline-block; background: white;" >JEITINHO BRASILEIRO</h1>
+		<h1 class="text-center" ng-if="firstscreen" style="padding: 30px 60px; font-weight: 900; display: inline-block; background: white;" >JEITINHO BRASILEIRO</h1>
 	</div>
 
-	<div id="Content">
-    	<span class="hidden-xs" style="cursor: pointer; color: white; position: absolute; bottom: 30px; right: 50px; font-size: 24px;" >AVANÇAR <i style="font-size: 42px; position: relative; top: 7px; left: 8px;" class="fa fa-caret-right" ></i></span>
+	<div id="Content" ng-if="firstscreen">
+    	<span class="hidden-xs" style="cursor: pointer; color: white; position: absolute; bottom: 30px; right: 50px; font-size: 24px;" ng-click="avancar();" >AVANÇAR <i style="font-size: 42px; position: relative; top: 7px; left: 8px;" class="fa fa-caret-right" ></i></span>
     	<span class="hidden-sm hidden-md hidden-lg" style="cursor: pointer; color: white; position: absolute; bottom: 50%; right: 50%; font-size: 22px;" ><i style="font-size: 42px; position: relative; top: 7px; left: 8px;" class="fa fa-caret-square-o-right" ></i></span>
+    </div>
+
+    <div class="container" ng-if="secondscreen" style="padding-top: 200px; background-image: url('/images/Presentationarrows.png'); background-size: contain; background-repeat: no-repeat; background-position: 100px;">
+    	<div class="col-md-6" style="text-align: left;">
+    		<h2 style="padding-left: 10px;">Leo Quer bumbum</h2>
+    		<div style="background-color: #FFFFFF; padding: 10px;">
+    			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    		</div>
+    	</div>
+    	<div class="col-md-6 explain">
+    		<div class="row"><img style="width: 180px; padding-right: 25px;" src="images/presentationcaracterpolitics.png"></div>
+    		<div class="row"><img style="width: 225px;" src="images/presentationcaracterpolitics2.png"></div>
+    	</div>
     </div>
 </div>
 
@@ -70,7 +83,8 @@ body {
 }
 
 #SiteTitle{
-    position: fixed; width: 100%; left: 0; top: 25px;
+    position: fixed; width: 100%; left: 0; top: 25px; z-index: 10;
+
 }
 
 #Content span:hover { color: #B8DE6A!important; }
