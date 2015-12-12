@@ -18,6 +18,7 @@
   angular
     .module('boilerplate', [
       'ngRoute',
+      'ngCookies',
       'firebase'
     ])
     .config(config)

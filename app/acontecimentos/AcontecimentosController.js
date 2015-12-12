@@ -5,16 +5,19 @@
     .module('boilerplate')
     .controller('AcontecimentosController', AcontecimentosController);
 
-  AcontecimentosController.$inject = ['$scope', '$routeParams', '$firebase', 'FIREBASE_URI'];
+  AcontecimentosController.$inject = ['$scope', '$routeParams', '$firebase', 'FIREBASE_URI', '$cookies'];
 
-  function AcontecimentosController($scope, $routeParams, $firebase, FIREBASE_URI) {
+  function AcontecimentosController($scope, $routeParams, $firebase, FIREBASE_URI, $cookies) {
 
     $scope.FaseId = $routeParams.faseId;
+    $scope.Estatisticas = null;
     $scope.Acontecimento = {};
     $scope.FazendoRequest = true;
 
     var ref = new Firebase(FIREBASE_URI);
     var acRef = ref.child('Fases');
+    var estRef = ref.child('Estatisticas');
+    var StatsId = $cookies.get('StatsId');
 
     acRef.set({
                 1: {
@@ -28,7 +31,7 @@
                       Respostas: [{
                           Texto: "Juliana é experiente, e já foi assessora de outros deputados no passado, mas Rafael nao há conhece muito, e durante a entrevista Juliana manifestou ter um temperamento dificil.",
                           ContinuacaoId: 2,
-                          Implicacoes: { Reputacao: 0, Dinheiro: 0, Corrupcao: 0 },
+                          Implicacoes: { Reputacao: 0, Dinheiro: 0, Corrupcao: 5 },
                         },
                         {
                           Texto: "Marcelo é irmao de Rafael, eles sao muito próximos, e Rafael sabe que ele é competente e se adaptaria rápido ao trabalho.",
@@ -70,17 +73,31 @@
                 }
           });
 
+    estRef.child('/' + StatsId).on("value", function(response) {
+      $scope.Estatisticas = angular.copy(response.val());
+      $scope.$apply();
+    });
+
     acRef.child('/' + $scope.FaseId + '/Acontecimentos/1').once("value", function(response) {
       $scope.Acontecimento = angular.copy(response.val());
       $scope.FazendoRequest = false;
     });
 
-    $scope.RealizaAcao = function(ContinuacaoId){
+    $scope.RealizaAcao = function(Resposta){
       $scope.FazendoRequest = true;
       $scope.Acontecimento = {};
-      acRef.child('/' + $scope.FaseId + '/Acontecimentos/' + ContinuacaoId).once("value", function(response) {
+
+      acRef.child('/' + $scope.FaseId + '/Acontecimentos/' + Resposta.ContinuacaoId).once("value", function(response) {
         $scope.Acontecimento = angular.copy(response.val());
         $scope.FazendoRequest = false;
+        $scope.$apply();
+      });
+
+      var Estatisticas = estRef.child(StatsId);
+      Estatisticas.update({
+        "Corrupcao": $scope.Estatisticas.Corrupcao + Resposta.Implicacoes.Corrupcao,
+        "Dinheiro": $scope.Estatisticas.Dinheiro + Resposta.Implicacoes.Dinheiro,
+        "Reputacao": $scope.Estatisticas.Reputacao + Resposta.Implicacoes.Reputacao
       });
     };
 

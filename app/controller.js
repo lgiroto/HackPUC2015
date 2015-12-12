@@ -12,39 +12,43 @@
     .module('boilerplate')
     .controller('MainController', MainController);
 
-  MainController.$inject = ['$scope'];
+  MainController.$inject = ['$scope', '$rootScope', 'FIREBASE_URI', '$cookies'];
 
 
-  function MainController($scope ) {
+  function MainController($scope, $rootScope, FIREBASE_URI, $cookies) {
 
-    // 'controller as' syntax
-    var self = this;
+    var ref = new Firebase(FIREBASE_URI);
 
     $scope.login = function () { 
 
-      var ref = new Firebase("https://boiling-inferno-5866.firebaseio.com");
-
       var userRef = ref.child('user');
-
       ref.authWithOAuthPopup("facebook", function(error, authData) {
         if (error) {
           console.log("Login Failed!", error);
         } else {
           console.log("Authenticated successfully with payload:", authData);
 
-          userRef.push({
-          name: authData.facebook.cachedUserProfile.name,
-          gender: authData.facebook.cachedUserProfile.gender,
-          age: authData.facebook.cachedUserProfile.age_range.min,
-          picture: authData.facebook.cachedUserProfile.picture.data.url 
+          var login = userRef.push({
+            name: authData.facebook.cachedUserProfile.name,
+            gender: authData.facebook.cachedUserProfile.gender,
+            age: authData.facebook.cachedUserProfile.age_range.min,
+            picture: authData.facebook.cachedUserProfile.picture.data.url 
           });
+          $cookies.put('UserId', login.key());
 
+          var estRef = ref.child('Estatisticas');
+          var stats = estRef.push({
+                  Reputacao: 0,
+                  Dinheiro: 0.5,
+                  Corrupcao: 0,
+                  Completo: 0,
+                  MissoesCompletas: 0
+            });
+          $cookies.put('StatsId', stats.key());
         }
       });
 
-  }
-
-
+    };
 }
 
 
