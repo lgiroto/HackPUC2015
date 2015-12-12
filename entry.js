@@ -1,0 +1,1 @@
+require("./app/fases/FasesController.js");
