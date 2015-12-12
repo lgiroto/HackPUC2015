@@ -48,12 +48,15 @@
 		<!-- Navigation -->
 		<!-- <main-nav></main-nav> -->
 		<div class="row text-center" ng-controller="LoginController" >
-			<div id="SiteTitle" style="z-index: 5;" >
+			<div id="SiteTitle" style="z-index: 5;" ng-if="!UserIsLogged" >
 				<p style="display: inline-block; color: white; cursor: pointer; font-size: 16px;">
 					<span ng-click="ChangeLoginOptions(1)" ><i class="fa fa-pencil-square-o"></i> &nbsp;Cadastro</span> &nbsp;&nbsp;
 					<span ng-click="ChangeLoginOptions(2)" ><i class="fa fa-key" ></i> &nbsp;Login</span> &nbsp;&nbsp;
 					<span ng-click="FacebookLogin()"  ><i class="fa fa-facebook-official" ></i> &nbsp;Entre pelo Facebook</span>
 				</p>
+			</div>
+			<div id="SiteTitle" style="z-index: 5;" ng-if="UserIsLogged" >
+				Olá, seja bem-vindo!
 			</div>
 		</div>
 
@@ -177,8 +180,9 @@ div#LoginDiv div h3 {
 	<script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="bower_components/ng-dialog/js/ngDialog.min.js"></script>
-	<script type="text/javascript" src="bower_components/alertify.js/lib/alertify.min.js"></script>
+	<script type="text/javascript" src="bower_components/alertify.js/lib/alertify.min.js"></script><script type="text/javascript" src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
 	<script type="text/javascript" src="js/angular/angularfire.min.js"></script>
+
 	<!-- endbuild -->
 
 	<!-- Angular components -->
