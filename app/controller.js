@@ -11,27 +11,37 @@
     .module('boilerplate')
     .controller('MainController', MainController);
 
-  MainController.$inject = ['LocalStorage', 'QueryService'];
+  MainController.$inject = ['$scope'];
 
 
-  function MainController(LocalStorage, QueryService) {
+  function MainController($scope ) {
 
     // 'controller as' syntax
     var self = this;
 
+    $scope.login = function () { 
 
-    ////////////  function definitions
+      var ref = new Firebase("https://boiling-inferno-5866.firebaseio.com");
+      ref.authWithOAuthPopup("facebook", function(error, authData) {
+        if (error) {
+          console.log("Login Failed!", error);
+        } else {
+          console.log("Authenticated successfully with payload:", authData);
 
+          console.log(authData.facebook.cachedUserProfile.id);
+          console.log(authData.facebook.cachedUserProfile.name);
+          console.log(authData.facebook.cachedUserProfile.gender);
+          console.log(authData.facebook.cachedUserProfile.age_range.min);
+          console.log(authData.facebook.cachedUserProfile.picture.data.url);
 
-    /**
-     * Load some data
-     * @return {Object} Returned object
-     */
-    // QueryService.query('GET', 'posts', {}, {})
-    //   .then(function(ovocie) {
-    //     self.ovocie = ovocie.data;
-    //   });
+        }
+      });
+
   }
+
+
+}
+
 
 
 })();
