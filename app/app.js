@@ -49,6 +49,10 @@
         templateUrl: 'app/fases/fases.html',
         controller: 'FasesController'
       })
+      .when('/:faseId/acontecimentos', {
+        templateUrl: 'app/acontecimentos/acontecimentos.html',
+        controller: 'AcontecimentosController'
+      })
       .when('/contact', {
         templateUrl: 'views/contact.html',
         controller: 'MainController',

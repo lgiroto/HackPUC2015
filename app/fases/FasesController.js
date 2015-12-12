@@ -24,25 +24,6 @@
     $scope.teste = "teste";
 
     var ref = new Firebase(FIREBASE_URI);
-
-    var userRef = ref.child('users');
-    var pintoRef = ref.child('pintos');
-
-    userRef.set({
-              amanda: {
-                friends: { "brinchen": true },
-                name: "Mary Chen",
-                widgets: { "one": true, "three": true }
-              }
-          });
-
-    pintoRef.set({
-              pintoso: {
-                friends: { "brinchen": true },
-                name: "Mary Chen",
-                widgets: { "one": true, "three": true }
-              }
-          });
   }
 
 
