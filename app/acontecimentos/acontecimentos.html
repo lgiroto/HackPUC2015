@@ -1,1 +1,8 @@
-fase: {{FaseId}}
+<div class="row">
+	<div class="col-md-8" style="border:1px solid;">
+		{{Acontecimento}}
+	</div>
+	<div class="col-md-4" style="border:1px solid;">
+		<select ng-model="RespostaId" ng-options="resposta.ContinuacaoId as resposta.Texto for resposta in Acontecimento.Respostas" ng-change="RealizaAcao(RespostaId)" ></select>
+	</div>
+</div>
