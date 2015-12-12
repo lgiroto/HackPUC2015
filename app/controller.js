@@ -64,8 +64,6 @@
               });
             };
 
-            
-
             $scope.Voltar = function() {
               $scope.LoginSelectedOption = 0;
             }
@@ -103,18 +101,6 @@
           }
         });*/
       });
-    };
-
-    $scope.Jogar = function () {
-      var estRef = ref.child('Estatisticas');
-      var stats = estRef.push({
-              Reputacao: 0,
-              Dinheiro: 0.5,
-              Corrupcao: 0,
-              Completo: 0,
-              MissoesCompletas: 0
-        });
-      $cookies.put('StatsId', stats.key());
     };
   }
 })();
