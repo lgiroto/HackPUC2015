@@ -47,6 +47,16 @@
       $cookies.put('StatsId', stats.key());
     };
 
+    $scope.checa = function(faseTipo){
+      console.log('jooooj');
+      if(faseTipo == '1'){
+        return false;
+      }
+      else{
+        return true;
+      }
+    }
+
   };
   
 })();
