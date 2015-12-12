@@ -22,6 +22,12 @@
     acRef.set({
                 1: {
 
+                  Img: 'something1',
+
+                  Nome: 'Fase 1',
+
+                  Descricao: 'Lorem Ipsum Dolor Sit Amet',
+
                   Acontecimentos: {
 
                     1: {

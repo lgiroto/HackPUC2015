@@ -1,9 +1,9 @@
 <div class="container">
 	<h1>TESTE</h1>
-	<div class="row" ng-repeat="fase in fases">
-		<div class="col-md-3"><p>{{ fase.id }}</p></div>
-		<div class="col-md-3"><p>{{ fase.nome }}</p></div>
-		<div class="col-md-3"><p>{{ fase.img }}</p></div>
+	<div class="row" ng-repeat="fase in fases" ng-if="!fase.id">
+		<div class="col-md-3"><p>{{ fase.Nome }}</p></div>
+		<div class="col-md-3"><p>{{ fase.Descricao }}</p></div>
+		<div class="col-md-3"><p>{{ fase.Img }}</p></div>
 		<div class="col-md-3"><button ng-click="action(fase.id)">Select</button></div>
 	</div>
 </div>
