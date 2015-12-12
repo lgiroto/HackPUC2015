@@ -29,6 +29,8 @@
 
                   Descricao: 'Lorem Ipsum Dolor Sit Amet',
 
+                  Id: 1,
+
                   Acontecimentos: {
 
                     1: {
@@ -65,7 +67,7 @@
                         {
                           Texto: "Rafael arca com as despesas da sua viagem.",
                           ContinuacaoId: 3,
-                          Implicacoes: { Reputacao: 0, Dinheiro: 0, Corrupcao: 0 }
+                          Implicacoes: { Reputacao: 50, Dinheiro: 0, Corrupcao: 0 }
                         },
                         {
                           Texto: "Rafael decide nao encontrar com o deputado.",
@@ -120,11 +122,24 @@
         "Dinheiro": $scope.Estatisticas.Dinheiro + Resposta.Implicacoes.Dinheiro,
         "Reputacao": $scope.Estatisticas.Reputacao + Resposta.Implicacoes.Reputacao
       });
+
+      $scope.seeOpt();
     };
 
     $scope.seeOpt = function(){
-      $scope.firstrow = false;
-      $scope.secondrow = true;
+      if($scope.firstrow){
+        $scope.firstrow = false;  
+      }
+      else{
+        $scope.firstrow = true; 
+      }
+      
+      if($scope.secondrow){
+        $scope.secondrow = false;
+      }
+      else{
+        $scope.secondrow = true;
+      }
     }
 
   }
