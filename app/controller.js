@@ -21,7 +21,11 @@
 
     $scope.login = function () { 
 
+
       var ref = new Firebase("https://boiling-inferno-5866.firebaseio.com");
+
+      var userRef = ref.child('user');
+
       ref.authWithOAuthPopup("facebook", function(error, authData) {
         if (error) {
           console.log("Login Failed!", error);
@@ -33,6 +37,8 @@
           console.log(authData.facebook.cachedUserProfile.gender);
           console.log(authData.facebook.cachedUserProfile.age_range.min);
           console.log(authData.facebook.cachedUserProfile.picture.data.url);
+
+              
 
         }
       });

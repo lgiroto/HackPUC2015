@@ -381,6 +381,7 @@
 
 	    $scope.FaseId = $routeParams.faseId;
 	    $scope.Acontecimento = {};
+	    $scope.FazendoRequest = true;
 
 	    var ref = new Firebase(FIREBASE_URI);
 	    var acRef = ref.child('Fases');
@@ -397,17 +398,39 @@
 	                      Respostas: [{
 	                          Texto: "Juliana é experiente, e já foi assessora de outros deputados no passado, mas Rafael nao há conhece muito, e durante a entrevista Juliana manifestou ter um temperamento dificil.",
 	                          ContinuacaoId: 2,
-	                          Implicacoes: { Reputacao: 0, Dinheiro: 0, Etica: 0 },
+	                          Implicacoes: { Reputacao: 0, Dinheiro: 0, Corrupcao: 0 },
 	                        },
 	                        {
-	                          Texto: "Marcelo é primo de Rafael, eles foram muito amigos desde a infância, e Rafael sabe que ele é competente e se adaptaria rápido ao trabalho.",
-	                          ContinuacaoId: 3,
-	                          Implicacoes: { Reputacao: 0, Dinheiro: 0, Etica: 0 }
+	                          Texto: "Marcelo é irmao de Rafael, eles sao muito próximos, e Rafael sabe que ele é competente e se adaptaria rápido ao trabalho.",
+	                          ContinuacaoId: 2,
+	                          Implicacoes: { Reputacao: 0, Dinheiro: 0, Corrupcao: 0 }
 	                        },
 	                        {
 	                          Texto: "Rômulo é um jovem advogado recém formado que possui muita iniciativa, porém nenhuma experiência.",
-	                          ContinuacaoId: 4,
-	                          Implicacoes: { Reputacao: 0, Dinheiro: 0, Etica: 0 }
+	                          ContinuacaoId: 2,
+	                          Implicacoes: { Reputacao: 0, Dinheiro: 0, Corrupcao: 0 }
+	                        }]
+
+	                    },
+
+	                    2: {
+
+	                      Descricao: "Rafael está visando um projeto de lei, sendo um novato, ele gostaria de aconselhamento de alguém mais experiente. Durante uma assembléia, Rafael conheceu outros deputados, e alguns deles se mostraram favoráveis as suas propostas. Um em particular, que está de férias, propôs um encontro, porém este estará em Recife no período que Rafael está disponível.",
+	                      Situacao: "Esta reuniao, apesar de ser a respeito de trabalho, e nao tem cunho oficial. O gabinete de Rafael nao está usufruindo nem com metade de toda a verba disponível.",
+	                      Respostas: [{
+	                          Texto: "Rafael usa parte da verba de gabinete para pagar sua viagem e a classifica como atividade parlamentar.",
+	                          ContinuacaoId: 3,
+	                          Implicacoes: { Reputacao: 0, Dinheiro: 0, Corrupcao: 0 },
+	                        },
+	                        {
+	                          Texto: "Rafael arca com as despesas da sua viagem.",
+	                          ContinuacaoId: 3,
+	                          Implicacoes: { Reputacao: 0, Dinheiro: 0, Corrupcao: 0 }
+	                        },
+	                        {
+	                          Texto: "Rafael decide nao encontrar com o deputado.",
+	                          ContinuacaoId: 3,
+	                          Implicacoes: { Reputacao: 0, Dinheiro: 0, Corrupcao: 0 }
 	                        }]
 
 	                    }
@@ -419,11 +442,15 @@
 
 	    acRef.child('/' + $scope.FaseId + '/Acontecimentos/1').once("value", function(response) {
 	      $scope.Acontecimento = angular.copy(response.val());
+	      $scope.FazendoRequest = false;
 	    });
 
 	    $scope.RealizaAcao = function(ContinuacaoId){
-	      acRef.child('/' + $scope.FaseId + '/Acontecimentos/' + $scope.ContinuacaoId).once("value", function(response) {
+	      $scope.FazendoRequest = true;
+	      $scope.Acontecimento = {};
+	      acRef.child('/' + $scope.FaseId + '/Acontecimentos/' + ContinuacaoId).once("value", function(response) {
 	        $scope.Acontecimento = angular.copy(response.val());
+	        $scope.FazendoRequest = false;
 	      });
 	    };
 
