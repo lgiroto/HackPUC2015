@@ -858,7 +858,12 @@ RESPONSIVE NAV
 /*********************
 MAIN PAGE
 *********************/
-#content {
+#Content {
+  background-image: url('/images/covericon.png');
+  background-size: 80%;
+  background-repeat: no-repeat;
+  height: 100%;
+  background-position: bottom;
   margin-top: 1.5em; }
 
 .slider {
@@ -938,6 +943,11 @@ NAVIGATION STYLES
 /*********************
 DESKTOP
 *********************/
+@media only screen and (max-width: 991px) {
+  #Content{
+    background-size: 100% !important;
+  }
+}
 @media only screen and (min-width: 1030px) {
   /******************************************************************
 
