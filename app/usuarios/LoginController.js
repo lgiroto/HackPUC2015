@@ -4,13 +4,20 @@
     .module('boilerplate')
     .controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$scope', '$rootScope', 'FIREBASE_URI', '$cookies', 'ngDialog', '$location'];
+  LoginController.$inject = ['$scope', '$rootScope', 'FIREBASE_URI', '$cookies', 'ngDialog', '$location', 'localStorageService'];
 
 
-  function LoginController($scope, $rootScope, FIREBASE_URI, $cookies, ngDialog, $location) {
+  function LoginController($scope, $rootScope, FIREBASE_URI, $cookies, ngDialog, $location, localStorageService) {
 
     var ref = new Firebase(FIREBASE_URI);
     var UserInfoRef = new Firebase(FIREBASE_URI + '/UserInfo');
+
+    $scope.checkIfLogged = function () {
+      var user = ref.getAuth();
+      if(user != null)
+        $rootScope.UserIsLogged = true;
+    };
+    $scope.checkIfLogged();
 
     $scope.ChangeLoginOptions = function(Option) {
       $scope.FazerLogin(Option);
@@ -90,6 +97,8 @@
                       break;
                   }
                 } else {
+                  $rootScope.UserIsLogged = true;
+                  $scope.$apply();
                   alertify.success("Bem-vindo!");
                   ngDialog.close();
                 }

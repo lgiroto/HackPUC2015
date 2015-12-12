@@ -20,7 +20,8 @@
       'ngRoute',
       'ngCookies',
       'firebase',
-      'ngDialog'
+      'ngDialog',
+      'LocalStorageModule'
     ])
     .config(config)
     .constant('FIREBASE_URI', 'https://boiling-inferno-5866.firebaseio.com/');
@@ -118,6 +119,7 @@
 
   function run($rootScope, $location) {
 
+    $rootScope.UserIsLogged = false;
     // put here everything that you need to run on page load
 
   }
