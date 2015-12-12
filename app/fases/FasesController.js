@@ -8,7 +8,6 @@
 
  var Firebase = require("firebase");
 
-
 ;(function() {
 
   angular
@@ -17,6 +16,10 @@
 
   FasesController.$inject = ['$firebase', 'FIREBASE_URI'];
 
+  var TypeEnum = {
+  CIVIL : 'Político',
+  POLITICIAN: 'Civil'
+};
 
   function FasesController($firebase, FIREBASE_URI) {
 
@@ -27,6 +30,8 @@
 
     var userRef = ref.child('users');
     var pintoRef = ref.child('pintos');
+
+    var faseRef = ref.child('fases');
 
     userRef.set({
               mchen: {
@@ -43,7 +48,16 @@
                 widgets: { "one": true, "three": true }
               }
           });
+
+    faseRef.set({
+          pessoa: {
+            name: "Leonardo",
+            type: TypeEnum.POLITICIAN,
+            age: 12,
+            profession: "Engenheiro"
+          }
+    });
   }
 
-
+  
 })();
