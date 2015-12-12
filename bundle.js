@@ -77,14 +77,23 @@
 
 	    var ref = new Firebase(FIREBASE_URI);
 
-	    ref.set({
-	            users: {
+	    var userRef = ref.child('users');
+	    var pintoRef = ref.child('pintos');
+
+	    userRef.set({
 	              mchen: {
 	                friends: { "brinchen": true },
 	                name: "Mary Chen",
 	                widgets: { "one": true, "three": true }
 	              }
-	            }
+	          });
+
+	    pintoRef.set({
+	              pintoso: {
+	                friends: { "brinchen": true },
+	                name: "Mary Chen",
+	                widgets: { "one": true, "three": true }
+	              }
 	          });
 	  }
 
