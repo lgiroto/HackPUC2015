@@ -50,8 +50,7 @@
         controller: 'FasesController'
       })
       .when('/:faseId/acontecimentos', {
-        templateUrl: 'app/acontecimentos/acontecimentos.html',
-        controller: 'AcontecimentosController'
+        templateUrl: 'app/acontecimentos/acontecimentos.html'
       })
       .when('/contact', {
         templateUrl: 'views/contact.html',

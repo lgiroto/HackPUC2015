@@ -1,8 +1,15 @@
 <div class="row">
-	<div class="col-md-8" style="border:1px solid;">
-		{{Acontecimento}}
+	<div ng-controller="AcontecimentosController" class="col-md-8" style="border:1px solid;">
+		<i ng-if="FazendoRequest" class="fa fa-spinner fa-spin" ></i>
+		<div class="row" ng-if="!FazendoRequest" >
+			<p>{{Acontecimento.Descricao}}</p>
+			<br>
+			<p>{{Acontecimento.Situacao}}</p>
+			<br>
+			<select ng-model="RespostaId" ng-options="resposta.ContinuacaoId as resposta.Texto for resposta in Acontecimento.Respostas" ng-change="RealizaAcao(RespostaId)" ></select>
+		</div>
 	</div>
-	<div class="col-md-4" style="border:1px solid;">
-		<select ng-model="RespostaId" ng-options="resposta.ContinuacaoId as resposta.Texto for resposta in Acontecimento.Respostas" ng-change="RealizaAcao(RespostaId)" ></select>
+	<div ng-controller="EstatisticasController" class="col-md-4" style="border:1px solid;">
+		<h3>Estatísticas</h3>
 	</div>
 </div>
