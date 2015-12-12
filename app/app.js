@@ -19,7 +19,8 @@
     .module('boilerplate', [
       'ngRoute',
       'ngCookies',
-      'firebase'
+      'firebase',
+      'ngDialog'
     ])
     .config(config)
     .constant('FIREBASE_URI', 'https://boiling-inferno-5866.firebaseio.com/');
