@@ -17,9 +17,11 @@
    */
   angular
     .module('boilerplate', [
-      'ngRoute'
+      'ngRoute',
+      'firebase'
     ])
-    .config(config);
+    .config(config)
+    .constant('FIREBASE_URI', 'https://boiling-inferno-5866.firebaseio.com/');
 
   // safe dependency injection
   // this prevents minification issues

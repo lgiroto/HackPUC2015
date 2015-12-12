@@ -16,29 +16,25 @@
     .module('boilerplate')
     .controller('FasesController', FasesController);
 
-  FasesController.$inject = ['LocalStorage', 'QueryService'];
+  FasesController.$inject = ['$firebase', 'FIREBASE_URI'];
 
 
-  function FasesController(LocalStorage, QueryService) {
+  function FasesController($firebase, FIREBASE_URI) {
 
     // 'controller as' syntax
     var vm = this;
 
-    var ref = new Firebase('https://boiling-inferno-5866.firebaseio.com/');
+    var ref = new Firebase(FIREBASE_URI);
 
     ref.set({
-      alanisawesome: {
-        date_of_birth: "June 2345258, 1912",
-        full_name: "Alan Turing"
-      },
-      gracehop: {
-        date_of_birth: "December 9, 1906",
-        full_name: "Grace Hopper"
-      }
-    });
-    
-
-
+            users: {
+              mchen: {
+                friends: { "brinchen": true },
+                name: "Mary Chen",
+                widgets: { "one": true, "three": true }
+              }
+            }
+          });
   }
 
 
