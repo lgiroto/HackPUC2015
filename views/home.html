@@ -1,12 +1,66 @@
 <div id="Main" class="row text-center" >
 	<div id="SiteTitle" >
-		<h1 class="text-center" style="padding: 30px 60px; font-weight: 900; display: inline-block; background: white;" >JEITINHO BRASILEIRO</h1>
+		<h1 class="text-center" ng-if="firstscreen" style="padding: 30px 60px; font-weight: 900; display: inline-block; background: white;" >JEITINHO BRASILEIRO</h1>
 	</div>
-	<div id="Content">
-    	<span class="hidden-xs" style="cursor: pointer; color: white; position: absolute; bottom: 30px; right: 50px; font-size: 24px;" >AVANÇAR <i style="font-size: 42px; position: relative; top: 7px; left: 8px;" class="fa fa-caret-right" ></i></span>
+
+	<div id="Content" ng-if="firstscreen">
+    	<span class="hidden-xs" style="cursor: pointer; color: white; position: absolute; bottom: 30px; right: 50px; font-size: 24px;" ng-click="avancar();" >AVANÇAR <i style="font-size: 42px; position: relative; top: 7px; left: 8px;" class="fa fa-caret-right" ></i></span>
     	<span class="hidden-sm hidden-md hidden-lg" style="cursor: pointer; color: white; position: absolute; bottom: 50%; right: 50%; font-size: 22px;" ><i style="font-size: 42px; position: relative; top: 7px; left: 8px;" class="fa fa-caret-square-o-right" ></i></span>
     </div>
 
+    <div class="container" ng-if="secondscreen" style="padding-top: 200px; background-image: url('/images/Presentationarrows.png'); background-size: contain; background-repeat: no-repeat; background-position: 100px;">
+    	<div class="col-md-6" style="text-align: left;">
+    		<h2 style="padding-left: 10px;">Leo Quer bumbum</h2>
+    		<div style="background-color: #FFFFFF; padding: 10px;">
+    			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    		</div>
+    	</div>
+    	<div class="col-md-6 explain">
+    		<div class="row"><img style="width: 180px; padding-right: 25px;" src="images/presentationcaracterpolitics.png"></div>
+    		<div class="row"><img style="width: 225px;" src="images/presentationcaracterpolitics2.png"></div>
+    	</div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="LoginDialog">
+	<i class="fa fa-times" style="color: white; position: absolute; top: 22px; right: 20px; font-size: 20px; cursor: pointer; z-index: 2;" ng-click="Fechar()" ></i>
+    <div class="ngdialog-message col-sm-12 col-md-12 col-lg-12" >
+    	<div class="row text-center LoginOptions" ng-if="LoginSelectedOption==1" >
+    		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-bottom: 25px; border-right: 1px solid;" >
+    			<h3 class="text-center" >CADASTRE-SE</h3><br>
+        		<div class="input-group" style="width: 100%;" >
+					<input style="width: 100%; max-width: 100%;" type="text" class="form-control" placeholder="Nome Completo" ng-model="NomeCompleto" >
+				</div><br>
+				<div class="input-group" style="width: 100%;" >
+					<input style="width: 100%; max-width: 100%;" type="text" class="form-control" placeholder="Data de Nascimento" ng-model="DataNascimento" >
+				</div><br>
+				<div class="input-group" style="width: 100%;" >	
+					<input style="width: 100%; max-width: 100%;" type="text" class="form-control" placeholder="E-mail" ng-model="Email" >
+				</div><br>
+				<div class="input-group" style="width: 100%;" >
+					<input style="width: 48%; max-width: 50%; float: left;" type="password" class="form-control" placeholder="Senha" ng-model="Senha" >
+
+					<input style="width: 48%; max-width: 50%; float: right;" type="password" class="form-control" placeholder="Confirmar Senha" ng-model="ConfirmarSenha" >
+				</div><br>
+				<button style="color: rgb(92, 107, 128); background: rgb(234, 237, 242); border-radius: 50%; width: 50px; height: 50px; margin-bottom: 10px;" class="btn btn-default" ng-click="CadastroManual(Email, Senha, NomeCompleto, DataNascimento)" >OK</button>
+        	</div>
+    	</div>
+
+    	<div class="row text-center LoginOptions" ng-if="LoginSelectedOption==2" >
+        	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+    			<h3 class="text-center" >FAÇA LOGIN</h3><br>
+        		<div class="input-group" style="width: 100%;" >
+					<input style="width: 100%; max-width: 100%;" type="text" class="form-control" placeholder="E-mail" ng-model="LoginEmail" >
+				</div><br>
+				<div class="input-group" style="width: 100%;" >
+					<input style="width: 100%; max-width: 100%;" type="password" class="form-control" placeholder="Senha" ng-model="LoginSenha" >
+				</div><br>
+				<button style="color: rgb(92, 107, 128); background: rgb(234, 237, 242); border-radius: 50%; width: 50px; height: 50px; margin-bottom: 20px;" class="btn btn-default" ng-click="LoginManual(LoginEmail, LoginSenha)" >OK</button>
+        	</div>
+        </div>
+    </div>
+</script>
     <div id="Tadeugay" > <button type="button" class="btn btn-danger" ng-click="LeoQuer(1)"> Leo Quer Cu </button> </div>
 	<div id="Leogay" > <button type="button" class="btn btn-danger" ng-click="LeoQuer(2)"> Leo Quer Bumbum </button> </div>
 </div>
+
