@@ -1,16 +1,87 @@
 <div ng-controller="AcontecimentosController" class="row">
-	<div class="col-md-8" style="border:1px solid;">
-		<i ng-if="FazendoRequest" class="fa fa-spinner fa-spin" ></i>
-		<div class="row" ng-if="!FazendoRequest" >
-			<p>{{Acontecimento.Descricao}}</p>
-			<br>
-			<p>{{Acontecimento.Situacao}}</p>
-			<br>
-			<select ng-model="Resposta" ng-options="resposta as resposta.Texto for resposta in Acontecimento.Respostas" ng-change="RealizaAcao(Resposta)" ></select>
+	<div class="col-md-8">
+		<div class="row">
+			<div class="row" style="margin-top: 30px;">
+				<div class="col-md-2">
+					<p style="background-color: #DDDDDD; margin: 0px; padding: 5px 5px 5px 15px; font-weight: bold;">Situação</p>
+				</div>
+			</div>
+			<div class="col-md-12 actBox" style="border:1px solid;">
+				<i ng-if="FazendoRequest" class="fa fa-spinner fa-spin" ></i>
+				<div class="row actBoxContent" ng-if="!FazendoRequest" >
+					<p>{{Acontecimento.Descricao}}</p>
+					<br>
+					<p>{{Acontecimento.Situacao}}</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row" ng-if="firstrow">
+			<div class="col-md-12">
+				<div class="col-md-5"><img style="width: 170px; float: left;" src="images/icontel1.png"></div>
+				<div class="col-md-2"><img style="width: 80px;" src="images/line.png"></div>
+				<div class="col-md-5"><img style="width: 170px; float: right;" src="images/iconson.png"></div>
+			</div>
+		</div>
+
+		<div class="row" ng-if="secondrow">
+			<div class="col-md-12">
+				<div class="row" style="display: flex;">
+					<div class="col-md-3 actOpt" ng-repeat="Resposta in Acontecimento.Respostas" ng-click="RealizaAcao(Resposta)">
+						<h3>Opção</h3>
+						<p>{{Resposta.Texto}}</p>
+					</div>
+				</div>
+				<div class="row" style="margin-top: 30px;">
+					<div class="col-md-12" style="text-align: center;"><img style="width: 170px;" src="images/icontel2.png"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row" ng-if="firstrow">
+			<div class="col-md-12">
+				<button style="float: right" ng-click="seeOpt()">Next</button>
+			</div>
 		</div>
 	</div>
-	<div class="col-md-4" style="border:1px solid;">
+	<div class="col-md-4 status">
 		<h3>Estatísticas</h3>
-		{{Estatisticas}}
+		<div class="row" style="border-bottom: 2px dashed #FFFFFF">
+			<div class="col-md-6">
+				<h4>Reputação</h4>
+				<div class="verticalStatusBar">
+					<div style="background-color: #FFFFFF; height: {{AlturaReputacao}}%;">
+						<p>{{Estatisticas.Reputacao}}%</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<h4>Corrupção</h4>
+				<div class="verticalStatusBar">
+					<div style="background-color: #FFFFFF; height: {{AlturaCorrupcao}}%;">
+						<p>{{Estatisticas.Corrupcao}}%</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="border-bottom: 2px dashed #FFFFFF">
+			<div class="col-md-8" style="border-right: 2px dashed #FFFFFF">
+				<h5>Missão</h5>
+			</div>
+			<div class="col-md-4">
+				<h5>Deadline</h5>
+			</div>
+		</div>
+		<div class="row" style="border-bottom: 2px dashed #FFFFFF">
+			<h5>Missoes Gerais</h5>
+		</div>
+		<div class="row lastStatus">
+			<h5>Progresso</h5>
+			<div class="horizontalStatusBar">
+				<span>{{Estatisticas.Completo}}%</span>
+				<div style="background-color: #F68E1E; width: {{AlturaCompleto}}%; height: 40px;">
+				</div>
+			</div>
+		</div>
 	</div>
 </div>

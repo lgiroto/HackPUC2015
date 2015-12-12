@@ -1,4 +1,3 @@
-
 ;(function() {
 
   angular
@@ -13,6 +12,8 @@
     $scope.Estatisticas = null;
     $scope.Acontecimento = {};
     $scope.FazendoRequest = true;
+    $scope.firstrow = true;
+    $scope.secondrow = false;
 
     var ref = new Firebase(FIREBASE_URI);
     var acRef = ref.child('Fases');
@@ -75,6 +76,18 @@
 
     estRef.child('/' + StatsId).on("value", function(response) {
       $scope.Estatisticas = angular.copy(response.val());
+      $scope.AlturaReputacao = 100 - parseInt($scope.Estatisticas.Reputacao);
+      if($scope.AlturaReputacao < 0){
+        $scope.AlturaReputacao = 0;
+      }
+      $scope.AlturaCorrupcao = 100 - parseInt($scope.Estatisticas.Corrupcao);
+      if($scope.AlturaCorrupcao < 0){
+        $scope.AlturaCorrupcao = 0;
+      }
+      $scope.AlturaCompleto = parseInt($scope.Estatisticas.Completo);
+      if($scope.AlturaCompleto > 100){
+        $scope.AlturaCompleto = 100;
+      }
       $scope.$apply();
     });
 
@@ -82,6 +95,8 @@
       $scope.Acontecimento = angular.copy(response.val());
       $scope.FazendoRequest = false;
     });
+
+    
 
     $scope.RealizaAcao = function(Resposta){
       $scope.FazendoRequest = true;
@@ -101,7 +116,11 @@
       });
     };
 
-  }
+    $scope.seeOpt = function(){
+      $scope.firstrow = false;
+      $scope.secondrow = true;
+    }
 
+  }
 
 })();

@@ -9,10 +9,12 @@ Date: Mar 2015
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%; }
+  -webkit-text-size-adjust: 100%; 
+  background-color: #36B5A9}
 
 body {
-  margin: 0; }
+  margin: 0;
+  background-color: #36B5A9 !important }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block; }
@@ -149,6 +151,68 @@ table {
 
 td, th {
   padding: 0; }
+
+.actBox{
+  background-color: #FFFFFF;
+  /*margin-top: 120px;*/
+  margin-bottom: 30px;
+}
+
+.actBoxContent{
+  padding: 15px;
+}
+
+.actOpt{
+  background-color: #FFFFFF; 
+  border: 7px solid #DDDDDD; 
+  margin-left: 45px;
+  cursor: pointer;
+}
+
+.actOpt:hover{
+  border-color: #FC8F00;
+}
+
+.status{
+  border:1px solid;
+  margin-top: 60px;
+  background-color: #B8D66D;
+  text-align: center;
+}
+.status h3{
+  display: inline-block;
+  border-bottom: 2px solid #FFFFFF;
+}
+
+.verticalStatusBar{
+  width: 40px;
+  height: 80px;
+  background-color: #F68E1E;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.verticalStatusBar p{
+  margin: 0px;
+  padding-top: 30px;
+}
+
+.horizontalStatusBar{
+  height: 40px;
+  width: 200px;
+  background-color: #FFFFFF;
+  display: inline-block
+}
+
+.horizontalStatusBar span{
+  position: absolute;
+  line-height: 40px;
+}
+
+.lastStatus{
+  margin-bottom: 10px;
+}
+
 
 /******************************************************************
 
