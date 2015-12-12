@@ -5,14 +5,14 @@
     .module('boilerplate')
     .controller('FasesController', FasesController);  
 
-  FasesController.$inject = ['$scope', '$firebase', 'FIREBASE_URI'];
+  FasesController.$inject = ['$scope', '$firebase', 'FIREBASE_URI', '$location'];
 
   var TypeEnum = {
   CIVIL : 'Político',
   POLITICIAN: 'Civil'
 };
 
-  function FasesController($scope, $firebase, FIREBASE_URI) {
+  function FasesController($scope, $firebase, FIREBASE_URI, $location) {
 
     // 'controller as' syntax
     var vm = this;
@@ -23,12 +23,22 @@
 
     faseRef.set({
           pessoa: {
-            name: "Amanda",
+            name: "Leonardo",
             type: TypeEnum.POLITICIAN,
             age: 12,
             profession: "Engenheiro"
           }
     });
+
+    $scope.fases = [
+      {id: 1, nome: "tadeu", img: "imagem"},
+      {id: 29, nome: "leo", img: "imagem"},
+      {id: 32, nome: "sams", img: "imagem"}
+    ];
+
+    $scope.action = function(parameterId){
+      $location.url(parameterId + '/acontecimentos/');
+    };
 
   }
 
