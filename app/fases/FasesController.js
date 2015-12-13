@@ -36,8 +36,8 @@
     $scope.IniciarJogo = function () {
       var estRef = ref.child('Estatisticas');
       var stats = estRef.push({
-              Reputacao: 0,
-              Dinheiro: 0.5,
+              Reputacao: 50,
+              SituacaoFinanceira: 3,
               Corrupcao: 0,
               Completo: 0,
               MissoesCompletas: 0

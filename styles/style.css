@@ -164,9 +164,9 @@ td, th {
 
 .actOpt{
   background-color: #FFFFFF; 
-  border: 7px solid #DDDDDD; 
-  margin-left: 45px;
+  border: 7px solid #DDDDDD;
   cursor: pointer;
+  margin-right: 15px;
 }
 
 .actOpt:hover{

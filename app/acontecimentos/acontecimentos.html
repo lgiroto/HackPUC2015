@@ -3,42 +3,43 @@
 		<div class="row">
 			<div class="row" style="margin-top: 30px;">
 				<div class="col-md-2">
-					<p style="background-color: #DDDDDD; margin: 0px; padding: 5px 5px 5px 15px; font-weight: bold;">Situação</p>
+					<p style="background-color: #DDDDDD; margin: 0px; padding: 5px 5px 5px 15px; font-weight: bold;">Semana XX</p>
 				</div>
 			</div>
 			<div class="col-md-12 actBox">
 				<i ng-if="FazendoRequest" class="fa fa-spinner fa-spin" ></i>
-				<div class="row actBoxContent" ng-if="!FazendoRequest" >
-					<p>{{Acontecimento.Descricao}}</p>
-					<br>
-					<p>{{Acontecimento.Situacao}}</p>
+				<div class="row actBoxContent" style="text-align: justify;" ng-if="!FazendoRequest" >
+					<p ng-if="Passo==0" >{{Acontecimento.Descricao}}</p>
+					<p ng-if="Passo==1" >{{Acontecimento.Situacao}}</p>
+					<p ng-if="Passo==2" >{{Desdobramento.Texto}}</p>
 				</div>
 			</div>
 		</div>
 
-		<div class="row" ng-if="firstrow">
-			<div class="col-md-12">
-				<div class="col-md-5"><img style="width: 170px; float: left;" src="images/icontel1.png"></div>
-				<div class="col-md-2"><img style="width: 80px;" src="images/line.png"></div>
-				<div class="col-md-5"><img style="width: 170px; float: right;" src="images/iconson.png"></div>
-			</div>
+		<div class="row" ng-if="!GameOn" >
+			<div class="col-md-12" ><img style="width: 70%;" src="images/Desdobramento/presocidadao.png"></div>
 		</div>
 
-		<div class="row" ng-if="secondrow">
+		<div class="row" >
+			<div class="col-md-12" ng-if="Passo==0" ><img style="width: 70%;" src="images/Situacao/{{Acontecimento.SituacaoUrl}}"></div>
+			<div class="col-md-12" ng-if="Passo==2" ><img style="width: 50%;" src="images/Desdobramento/{{Desdobramento.DesdobramentoUrl}}"></div>
+		</div>
+
+		<div class="row" ng-if="Passo==1">
 			<div class="col-md-12">
-				<div class="row" style="display: flex;">
-					<div class="col-md-3 actOpt" ng-repeat="Resposta in Acontecimento.Respostas" ng-click="RealizaAcao(Resposta)">
-						<h3>Opção</h3>
+				<div class="row" style="display: flex; margin-left: 10px;">
+					<div class="col-xs-12 col-md-4 actOpt" ng-repeat="Resposta in Acontecimento.Respostas" ng-click="RealizaAcao(Resposta)">
+						<h3>Opção {{$index + 1}}</h3>
 						<p>{{Resposta.Texto}}</p>
 					</div>
 				</div>
 				<div class="row" style="margin-top: 30px;">
-					<div class="col-md-12" style="text-align: center;"><img style="width: 170px;" src="images/icontel2.png"></div>
+					<div class="col-md-12" style="text-align: center; position: absolute;top: 60px;z-index: -1;"><img style="width: 100%; max-width: 400px;" src="images/Pergunta/{{Acontecimento.PerguntaUrl}}"></div>
 				</div>
 			</div>
 		</div>
 
-		<div class="row" ng-if="firstrow">
+		<div class="row" ng-if="Passo!=1" >
 			<div class="col-md-12">
 				<button style="float: right" ng-click="seeOpt()">Next</button>
 			</div>
@@ -63,18 +64,22 @@
 					</div>
 				</div>
 			</div>
+			<div class="col-md-12" >
+				<h4>Situação Financeira: </h4>
+				<p>{{Estatisticas.SituacaoFinanceira}}</p>
+			</div>
 		</div>
-		<div class="row" style="border-bottom: 2px dashed #FFFFFF">
+		<!-- <div class="row" style="border-bottom: 2px dashed #FFFFFF">
 			<div class="col-md-8" style="border-right: 2px dashed #FFFFFF">
 				<h5>Missão</h5>
 			</div>
 			<div class="col-md-4">
 				<h5>Deadline</h5>
 			</div>
-		</div>
-		<div class="row" style="border-bottom: 2px dashed #FFFFFF">
+		</div> -->
+		<!-- <div class="row" style="border-bottom: 2px dashed #FFFFFF">
 			<h5>Missoes Gerais</h5>
-		</div>
+		</div> -->
 		<div class="row lastStatus">
 			<h5>Progresso</h5>
 			<div class="horizontalStatusBar">
