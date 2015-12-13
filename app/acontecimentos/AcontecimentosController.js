@@ -23,9 +23,9 @@
     var StatsId = $cookies.get('StatsId');
 
     acRef.set({
-                1: {
+                2: {
 
-                  Img: 'something1',
+                  Img: 'images/withoutarrow_1024.png',
 
                   Nome: 'Claudio',
 
@@ -76,6 +76,7 @@
                           ContinuacaoId: 2,
                           Implicacoes: { Reputacao: 5, Corrupcao: 0, SituacaoFinanceira: 0 },
                           DesdobramentoPositivo: {
+                              DesdobramentoUrl: 'casal.png',
                               ContinuacaoId: 2,
                               Texto: "Claudio deu sorte que ela estava de bom-humor e o levou em casa, ainda que não muito disposta. Mesmo sua namorada não estando completamente confortável com a situação, ela achou responsável da parte dele não voltar dirigindo. Claudio ganhou 5% de Reputação."
                           }
@@ -151,6 +152,56 @@
 
                   }
                   
+                },
+
+                1: {
+
+                  Img: 'images/withoutarrow_1025.png',
+
+                  Nome: 'Rafael',
+
+                  Descricao: 'Rafael é um jovem deputado estadual, que acabou de comecar essa jornada que a família dele sempre o incentivou. Ele nasceu na cidade do Rio de Janeiro, e desde pequeno mostrou um grande interesse nas áreas de humanas, sobretudo no debate e política. Rafael escolheu com conviccao o curso de direito, se formando com grande mérito. Na época de faculdade, se envolveu em movimentos estudantis e conheceu muitas pessoas influêntes que lhe renderam muitos frutos. Nao demorou muito para se candidatar a deputado estadual e ser eleito. É uma pessoa carismática e ambiciosa, porém nesse caminho ele enfrentará muitas dúvidas e ciladas.',
+
+                  Tipo: 2,
+
+                  Acontecimentos: {
+
+                    1: {
+
+                      SituacaoUrl: "candidats.png",
+                      PerguntaUrl: "duviddep.png",
+                      Descricao: "Rafael acaba de entrar em seu novo gabinete. Seus próximos passos sao essenciais para o bom funcionamento de seu trabalho. Dentro da verba de gabinete, Rafael precisa contratar assessores para auxilia-lo nos afazeres de todos os dias. Há um limite de 25 pessoas e mínimo de 5 pessoas, que nao necessariamente sao servidores públicos, que ele pode contratar a dedo",
+                      Situacao: "Quem contratar? Como ele está apenas comecando, ele decidiu por contratar o mínimo, e com o tempo contratando outras pessoas caso fosse necessário. 4 dessas vagas foram já preenchidas por recomendacao, resta 1. Rafael possui alguns candidatos as quais poderiam exercer as funcoes.",
+                      Respostas: [{
+                          Texto: "Juliana é experiente, e já foi assessora de outros deputados no passado, mas Rafael nao há conhece muito, e durante a entrevista Juliana manifestou ter um temperamento dificil.",
+                          Implicacoes: { Reputacao: -5, Corrupcao: 0, SituacaoFinanceira: -1 },
+                          DesdobramentoPositivo: {
+                            DesdobramentoUrl: 'julinanacontratada.png',
+                              ContinuacaoId: 2,
+                              Texto: "Como novato, Rafael se sente mais confortável em contratar alguem com mais experiencia. Porem essa escolha ira pesar na sua reputação, pois ficará sendo mal visto pela família e na sua situação financeira, graças ao preço de trabalho elevado da Juliana",
+                          }
+                        },
+                        {
+                          Texto: "Marcelo é irmao de Rafael, eles sao muito próximos, e Rafael sabe que ele é competente e se adaptaria rápido ao trabalho.",
+                          Implicacoes: { Reputacao: 0, SituacaoFinanceira: 0, Corrupcao: -5 },
+                          DesdobramentoPositivo: {
+                          DesdobramentoUrl: 'prets.png',
+                              ContinuacaoId: 2,
+                              Texto: "Rafael vai se sentir muito mais confortavel com seu irmão por perto, mas aos olhos dos outros o seu nivel de corrupção ja começa a crescer nesse ambiente politico"
+                          }
+                        },
+                        {
+                          Texto: "Rômulo é um jovem advogado recém formado que possui muita iniciativa, porém nenhuma experiência.",
+                          ContinuacaoId: 2,
+                          Implicacoes: { Reputacao: 5, Corrupcao: 0, SituacaoFinanceira: 1 },
+                          DesdobramentoPositivo: {
+                              DesdobramentoUrl: 'candiradsafasyxcyvy.png',
+                              ContinuacaoId: 2,
+                              Texto: "Rafael da uma chance a alguem como ele, um novato. A escolha dele, a longo prazo, levará a uma melhora e sua situação financeira, alem de ser bem visto pelo povo"
+                          }
+                        }]
+                    }
+                  }
                 }
           });
 
