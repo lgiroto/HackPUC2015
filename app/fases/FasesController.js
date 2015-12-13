@@ -1,35 +1,30 @@
-
 ;(function() {
 
   angular
     .module('boilerplate')
     .controller('FasesController', FasesController);  
 
-  FasesController.$inject = ['$scope', '$firebase', 'FIREBASE_URI', '$location', '$cookies'];
+  FasesController.$inject = ['$scope', '$firebase', 'FIREBASE_URI', '$location', '$cookies', '$routeParams'];
 
-  function FasesController($scope, $firebase, FIREBASE_URI, $location, $cookies) {
-
-    // 'controller as' syntax
-    var vm = this;
-    $scope.fases = [];
+  function FasesController($scope, $firebase, FIREBASE_URI, $location, $cookies, $routeParams) {
+    var TipoId = $routeParams.tipoId;
     var ref = new Firebase(FIREBASE_URI);
+    $scope.FazendoRequest = true;
 
     var faseRef = ref.child('Fases');
 
-    faseRef.once("value", function(response){
-
-        $scope.fases = angular.copy(response.val());
-        $scope.fases = _.reject($scope.fases, function(fase){ return !fase; });
+    faseRef.child('/' + TipoId).on('value', function(response){
+        $scope.fase = response.val();
+        $scope.FazendoRequest = false;
         $scope.$apply();
-        
     });
 
-    $scope.action = function(parameterId){
+    $scope.action = function(){
       var user = ref.getAuth();
 
       if(user != null){
         $scope.IniciarJogo();
-        $location.url(parameterId + '/acontecimentos/');
+        $location.url(TipoId + '/acontecimentos/');
       }
       else
         alertify.error('Por favor, faça Login');
@@ -46,16 +41,6 @@
         });
       $cookies.put('StatsId', stats.key());
     };
-
-    $scope.checa = function(faseTipo){
-      console.log('jooooj');
-      if(faseTipo == '1'){
-        return false;
-      }
-      else{
-        return true;
-      }
-    }
 
   };
   
