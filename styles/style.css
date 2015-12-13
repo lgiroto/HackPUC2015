@@ -212,6 +212,12 @@ td, th {
   margin-bottom: 10px;
 }
 
+.playBtn{
+  width: 140px;
+  height: 50px;
+  font-size: 30px;
+}
+
 
 /******************************************************************
 
