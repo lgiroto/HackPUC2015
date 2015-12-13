@@ -239,7 +239,82 @@
                               ContinuacaoId: 2,
                               Texto: "Rafael da uma chance a alguem como ele, um novato. A escolha dele, a longo prazo, levará a uma melhora e sua situação financeira, alem de ser bem visto pelo povo"
                           }
-                        }]
+                        }
+                      ]
+                    },
+
+                    2: {
+
+                      SituacaoUrl: "candidats.png",
+                      PerguntaUrl: "duviddep.png",
+                      Descricao: "Rafael está visando um projeto de lei, sendo um novato, ele gostaria de aconselhamento de alguem mais experiente. Durante uma assembléia, Rafael conheceu outros deputados, e alguns deles se mostraram favoráveis às suas propostas. Um em particular, que está de férias, propôs um encontro, porém este estará em Recife no período que Rafael está disponível.",
+                      Situacao: "Esta reuniao, apesar de ser a respeito de trabalho, nao tem cunho oficial. O gabinete de Rafael nao está usufruindo nem de metade de toda a verba disponível.",
+                      Respostas: [{
+                          Texto: "Rafael usa parte da verba de gabinete para pagar sua viagem e a classifica como atividade parlamentar.",
+                          Implicacoes: { Reputacao: -5, Corrupcao: 0, SituacaoFinanceira: -1 },
+                          DesdobramentoPositivo: {
+                            DesdobramentoUrl: 'julinanacontratada.png',
+                              ContinuacaoId: 2,
+                              Texto: "Como novato, Rafael se sente mais confortável em contratar alguem com mais experiencia. Porem essa escolha ira pesar na sua reputação, pois ficará sendo mal visto pela família e na sua situação financeira, graças ao preço de trabalho elevado da Juliana",
+                          }
+                        },
+                        {
+                          Texto: "Rafael arca com as despesas da sua viagem.",
+                          Implicacoes: { Reputacao: 0, SituacaoFinanceira: 0, Corrupcao: -5 },
+                          DesdobramentoPositivo: {
+                          DesdobramentoUrl: 'prets.png',
+                              ContinuacaoId: 2,
+                              Texto: "Rafael vai se sentir muito mais confortavel com seu irmão por perto, mas aos olhos dos outros o seu nivel de corrupção ja começa a crescer nesse ambiente politico"
+                          }
+                        },
+                        {
+                          Texto: "Rafael decide nao encontrar com o deputado.",
+                          ContinuacaoId: 2,
+                          Implicacoes: { Reputacao: 5, Corrupcao: 0, SituacaoFinanceira: 1 },
+                          DesdobramentoPositivo: {
+                              DesdobramentoUrl: 'candiradsafasyxcyvy.png',
+                              ContinuacaoId: 2,
+                              Texto: "Rafael da uma chance a alguem como ele, um novato. A escolha dele, a longo prazo, levará a uma melhora e sua situação financeira, alem de ser bem visto pelo povo"
+                          }
+                        }
+                      ]
+                    }
+
+                    3: {
+
+                      SituacaoUrl: "candidats.png",
+                      PerguntaUrl: "duviddep.png",
+                      Descricao: "Rafael está nas últimas etapas de conclusao do seu projeto de lei. Porém, por se tratar de um tema polêmico, ele tem medo que sua proposta nem passe pelo plenário. Um deputado de outro  partido o ofereceu apoio, porém com uma condicao: que seu projeto, entrando em vigor, fosse executado pela empresa a qual ele é dono.",
+                      Situacao: "Rafael está confiante que o projeto seria benéfico para a sociedade. Ele está incerto sobre as consequências de tal acordo, mas sua proposta ser rejeitada prejudicaria a reputacao de Rafael entre os deputados. Rafael se encontra em uma encruzilhada.",
+                      Respostas: [{
+                          Texto: "Rafael nao faz acordo com o deputado e corre risco de seu trabalho nao ser aprovado.",
+                          Implicacoes: { Reputacao: -5, Corrupcao: 0, SituacaoFinanceira: -1 },
+                          DesdobramentoPositivo: {
+                            DesdobramentoUrl: 'julinanacontratada.png',
+                              ContinuacaoId: 2,
+                              Texto: "Como novato, Rafael se sente mais confortável em contratar alguem com mais experiencia. Porem essa escolha ira pesar na sua reputação, pois ficará sendo mal visto pela família e na sua situação financeira, graças ao preço de trabalho elevado da Juliana",
+                          }
+                        },
+                        {
+                          Texto: "Rafael faz o acordo e corre o risco de ser pego.",
+                          Implicacoes: { Reputacao: 0, SituacaoFinanceira: 0, Corrupcao: -5 },
+                          DesdobramentoPositivo: {
+                          DesdobramentoUrl: 'prets.png',
+                              ContinuacaoId: 2,
+                              Texto: "Rafael vai se sentir muito mais confortavel com seu irmão por perto, mas aos olhos dos outros o seu nivel de corrupção ja começa a crescer nesse ambiente politico"
+                          }
+                        },
+                        {
+                          Texto: "Rafael faz acordo, mas volta atrás na sua decisao se seu projeto for aprovado.",
+                          ContinuacaoId: 2,
+                          Implicacoes: { Reputacao: 5, Corrupcao: 0, SituacaoFinanceira: 1 },
+                          DesdobramentoPositivo: {
+                              DesdobramentoUrl: 'candiradsafasyxcyvy.png',
+                              ContinuacaoId: 2,
+                              Texto: "Rafael da uma chance a alguem como ele, um novato. A escolha dele, a longo prazo, levará a uma melhora e sua situação financeira, alem de ser bem visto pelo povo"
+                          }
+                        }
+                      ]
                     }
                   }
             	}
