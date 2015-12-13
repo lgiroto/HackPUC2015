@@ -16,11 +16,11 @@
 			</div>
 		</div>
 
-		<div class="row" ng-if="!GameOn" >
-			<div class="col-md-12" ><img style="width: 70%;" src="images/Desdobramento/presocidadao.png"></div>
+		<div class="row" ng-if="!GameOn&&GameOverUrl" >
+			<div class="col-md-12" ><img style="width: 70%;" src="images/Desdobramento/{{GameOverUrl}}"></div>
 		</div>
 
-		<div class="row" >
+		<div class="row" ng-if="!GameOverUrl" >
 			<div class="col-md-12" ng-if="Passo==0" ><img style="width: 70%;" src="images/Situacao/{{Acontecimento.SituacaoUrl}}"></div>
 			<div class="col-md-12" ng-if="Passo==2" ><img style="width: 50%;" src="images/Desdobramento/{{Desdobramento.DesdobramentoUrl}}"></div>
 		</div>

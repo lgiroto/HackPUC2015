@@ -16,6 +16,7 @@
     $scope.RespostaSelecionada = {};
     $scope.Desdobramento = {};
     $scope.GameOn = true;
+    $scope.GameOverUrl = null;
 
     var ref = new Firebase(FIREBASE_URI);
     var acRef = ref.child('Fases');
@@ -85,13 +86,25 @@
                     2: {
 
                     	SituacaoUrl: "claudioechefe.png",
-                      PerguntaUrl: "duvidacarro.png",
-                      Descricao: "A Agência de Publicidade onde Claudio trabalha está sofrendo gravemente com a crise econômica. Assim, está tendo de cortar gastos. O Gerente de Claudio avisa-o que eles irão cancelar a anualidade dos softwares utilizados para a produção de conteúdo na empresa e serão substituídos por versões 'alternativas' - um eufemismo para não dizer que passarão a usar programas piratas.",
-                      Situacao: "Claudio não se sente nem um pouco confortável com essa situação, visto que os softwares utilizados pela empresa possuem fins comerciais. No entanto, sabe que qualquer oposição que faça quanto a a isso, poderá custar seu emprego; do qual ele depende para sustentar sua família.",
-                      Respostas: [{
-                          Texto: "Claudio faz vista grossa para a situação e faz uso dos softwares piratas.",
-                          ContinuacaoId: 6,
-                          Implicacoes: { Corrupcao: 5, Reputacao: 0, SituacaoFinanceira: 0 }
+                      	PerguntaUrl: "duvidacarro.png",
+                      	Descricao: "A Agência de Publicidade onde Claudio trabalha está sofrendo gravemente com a crise econômica. Assim, está tendo de cortar gastos. O Gerente de Claudio avisa-o que eles irão cancelar a anualidade dos softwares utilizados para a produção de conteúdo na empresa e serão substituídos por versões 'alternativas' - um eufemismo para não dizer que passarão a usar programas piratas.",
+                      	Situacao: "Claudio não se sente nem um pouco confortável com essa situação, visto que os softwares utilizados pela empresa possuem fins comerciais. No entanto, sabe que qualquer oposição que faça quanto a a isso, poderá custar seu emprego; do qual ele depende para sustentar sua família.",
+                      	Respostas: [{
+                          	Texto: "Claudio faz vista grossa para a situação e faz uso dos softwares piratas.",
+                          	Implicacoes: { Corrupcao: 10, Reputacao: 0, SituacaoFinanceira: 0 },
+                          	Probabilidade: 0.4,
+                          	DesdobramentoPositivo: {
+                              	ContinuacaoId: 4,
+                              	Texto: "Devido a uma denúncia anônima, a fiscalização do governo bateu na porta da sua empresa. Felizmente, os gestores conseguiram contornar a situação, ainda que de maneiras cuja ética é questionável, e a fraude nos softwares não foi detectada. Seu íncide de corrupção subiu em 10%."
+                          	},
+                          	DesdobramentoNegativo: {
+                            	ContinuacaoId: 0,
+                      			DesdobramentoUrl: 'nomoney.png',
+                            	Texto: "Devido a uma denúncia anônima, a fiscalização do governo bateu na porta da sua empresa. Ao descobrir a utilização de softwares ilegais, a companhia foi multada em um alto valor. Essa, que já passava por um situação financeira crítica, teve de realizar demissões em massa; e ainda assim tendo chances de falir. E, dessa vez, você foi demitido também. Assim, nossa história acaba aqui.",
+                            	Artigo: "\"Art. 1° Constitui crime contra a ordem tributária suprimir ou reduzir tributo, ou contribuição social e qualquer acessório, mediante as seguintes condutas: (Vide Lei nº 9.964, de 10.4.2000)(...)III - falsificar ou alterar nota fiscal, fatura, duplicata, nota de venda, ou qualquer outro documento relativo à operação tributável; IV - elaborar, distribuir, fornecer, emitir ou utilizar documento que saiba ou deva saber falso ou inexato; Pena - reclusão de 2 (dois) a 5 (cinco) anos, e multa.\"",
+                              Fonte: "LEI Nº 8.137, DE 27 DE DEZEMBRO DE 1990.",
+                              Link: "http://www.planalto.gov.br/ccivil_03/Leis/L8137.htm"
+                          	}
                         },
                         {
                           Texto: "Claudio tenta argumentar com seus superiores contra a realização dos cortes às anualidades do programas.",
@@ -108,8 +121,12 @@
                         },
                         {
                           Texto: "Claudio começa a procurar por emprego em outra empresa.",
-                          ContinuacaoId: 5,
-                          Implicacoes: { Reputacao: 15, Corrupcao: 0, SituacaoFinanceira: 0 }
+                          Implicacoes: { Reputacao: 15, Corrupcao: 0, SituacaoFinanceira: 1 },
+                          DesdobramentoPositivo: {
+                          	DesdobramentoUrl: 'empregocidadao.png',
+                              ContinuacaoId: 4,
+                              Texto: "As ofertas de emprego eram escassas e encontrar um novo emprego com a idade de Claudio era uma tarefa árdua. Quando as esperanças já estavam se esgotando, uma oportunidade lhe surgiu e, para sua surpresa, cujo potencial de remuneração era ainda superior da empresa atual. Sua Reputação cresceu em 15% e sua Situação Financeira melhorou."
+                          }
                         }]
                     },
 
@@ -147,11 +164,35 @@
                           }
                         }]
 
-                    }
+                    },
 
-                  }
+                    4: {
+
+                    	SituacaoUrl: ".png",
+                      	PerguntaUrl: ".png",
+                      	Descricao: "Segunda-Feira de manhã e Claudio tinha uma reunião importante no centro da cidade. O trânsito estava intenso e mesmo havendo saído de casa e pego o táxi com antecedência, provavelmente iria se atrasar. No entanto, o taxista, que já havia experiência de anos no volante, conseguiu pegar atalhos pela cidade e fazer com que ele chegasse na hora.",
+                      	Situacao: "Como se tratava de uma reunião da empresa, ela quem pagaria o taxi de transporte de Claudio. Assim, o taxista, sabendo disso, tendo ajudado Claudio a chegar rapidamente no destino e ter prestado um ótimo serviço, pediu para que pudese colocar uma nota mais alta na cobrança. Afinal, não faria diferença para Claudio. Como ele deveria reagir?",
+                      	Respostas: [{
+		                          		Texto: "Claudio permite que o taxista faça a alteração na nota, mas um valor não muito mais alto. Afinal, ele o havia ajudado bastante.",
+		                          		Implicacoes: { Reputacao: 0, SituacaoFinanceira: 0, Corrupcao: 10 },
+		                          		DesdobramentoPositivo: {
+			                              	ContinuacaoId: -1,
+			                              	Texto: "O taxista agradece pelo agrado e a informação fica entre vocês, não sendo descoberto por ninguém da empresa. Seu índice de corrupção aumentou em 10%."
+		                          		}
+	                          		},
+	                          		{
+		                          		Texto: "Claudio não permite que ele faça a mudança na nota, mas dá, em dinheiro, um extra pela corrida.",
+		                          		Implicacoes: { Reputacao: 5, SituacaoFinanceira: -1, Corrupcao: 0 },
+		                          		DesdobramentoPositivo: {
+			                              	ContinuacaoId: -1,
+			                              	Texto: "O taxista agradece pelo agrado, mas ainda se sente contrariado. O gasto extra, no entanto, não estava previsto. Sua Reputação cresceu em 5%, porém, sua Situação Financeira, caiu."
+		                          		}
+                        			}]
+
+                    }
                   
-                }
+            	}
+            }
           });
 
     $scope.RecuperaEstatisticas = function (applyBool) {
@@ -247,6 +288,16 @@
     };
 
     $scope.GameOver = function(Motivo){
+    	// Define a Imagem de GameOver
+    	switch(Motivo){
+    		case "Corrupção":
+    			$scope.GameOverUrl = "presocidadao.png";
+    			break;
+    		case "Falência":
+    			$scope.GameOverUrl = "nomoney.png";
+    			break;
+    	}
+
     	// Remove Estatísticas do Jogo Atual
     	var estRef = ref.child('Estatisticas/' + StatsId);
     	estRef.remove();
